@@ -1,0 +1,25 @@
+graph {
+	rankdir=LR
+	{B C A} -- {3 1 2} -- {Z X Y}
+	
+	subgraph {
+		cluster=true
+		label="Users"
+	
+		A B C
+	}
+	
+	subgraph {
+		cluster=true
+		label="VPN Servers"
+	
+		1 2 3
+	}
+	
+	subgraph {
+		cluster=true
+		label="Users"
+	
+		X Y Z
+	}
+}
