@@ -1,6 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage[a4paper,left=2.5cm,right=3.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{csquotes}
 \usepackage[style=numeric]{biblatex}
+\addbibresource{references.bib}
 \usepackage[ngerman]{babel}
 \usepackage{titlesec}
 \usepackage{lipsum}
@@ -23,7 +25,8 @@
     \include{chapter/research.tex}
     \include{chapter/evaluation.tex}
     \include{chapter/summary.tex}
+    \include{chapter/discussion.tex}
     \include{chapter/appendix.tex}
-    \printbibliography
+    \printbibliography[title = {Literaturverzeichnis}, heading=bibnumbered]
     \include{chapter/independence.tex}
 \end{document}
