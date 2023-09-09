@@ -10,6 +10,10 @@ Solche Systeme verwenden verschiedene Techniken, um Anonymität zu gewährleiste
 
 Anonyme Kommunikationssysteme werden oft in Umgebungen eingesetzt, in denen der Schutz der Privatsphäre, die Verhinderung von Überwachung oder die Umgehung von Zensur von hoher Bedeutung sind. Sie finden Anwendung in verschiedenen Bereichen, darunter Online-Kommunikation, Whistleblowing, politische Aktivitäten und Forschung, bei denen der Schutz der Identität und der Informationsfreiheit zentral sind. Bekannte Beispiele für solche Systeme sind das Tor-Netzwerk, VPN-Dienste (Virtual Private Networks) und Mixnet-Technologien.
 
+\subsection{Overlay Networks}
+
+Overlay Networking ist eine Methode, bei der Software verwendet wird, um virtuelle Netzwerkabstraktionsschichten über einem physischen Netzwerk zu erstellen. Dies ermöglicht die Ausführung mehrerer getrennter virtualisierter Netzwerkschichten und bietet neue Anwendungen und Sicherheitsvorteile. Virtuelle Verbindungen zwischen Netzwerk-Endpunkten werden mithilfe von Software-Tags, Labels und/oder Verschlüsselung erstellt. Dies ermöglicht die Sicherung der Datenübertragung und die Authentifizierung der Benutzer. Overlay-Netzwerke können Peer-to-Peer-Netzwerke, IP-Netzwerke und VLANs umfassen und verwenden verschiedene Netzwerkprotokolle. Sie ermöglichen die Flexibilität, Netzwerk-Endpunkte mit Software zu verwalten.\footnotemark\footnotetext{\cite{OverlayNetwork}, Overlay Network}
+
 \subsubsection{Mixnet}
 
 Ein Mixnet ist ein System, das aus mehreren Servern besteht, die als MIXe oder MIX-Knoten bezeichnet werden. Jeder dieser MIXe ist mit einem öffentlichen Schlüssel verbunden. Der Hauptzweck eines MIX-Netzes besteht darin, eine Möglichkeit zu bieten, Nachrichten anonym und privat über ein Netzwerk zu versenden.
@@ -26,7 +30,8 @@ So funktioniert ein MIX-Netz:
 
 \item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
 
-\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter.
+\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter
+\footnotemark\footnotetext{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
 
 \end{itemize}
 
@@ -42,9 +47,9 @@ MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt un
 
 \item Verteilte "Flash-MIXe": Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
 
-\item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen.
+\item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen\footnotemark\footnotetext{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
 
-\end{itemize} \footnotemark\footnotetext{\Cite{ComposableMixNet}, A Universally Composable Mix-Net}.
+\end{itemize}.
 
 \subsubsection{Tor}
 
@@ -60,7 +65,7 @@ Tor, die Abkürzung für "The Onion Router", ist ein auf den Schutz der Privatsp
 
 \end{itemize}
 
-Die mehrschichtige Verschlüsselung und das Multi-Hop-Routing in Tor bieten ein hohes Maß an Privatsphäre und Anonymität. Der Eingangsknoten und der Ausgangsknoten haben nur teilweise Informationen über die Daten und ihren Ursprung oder ihr Ziel. Das macht es für jeden, der den Netzwerkverkehr beobachtet, schwierig, die Quelle und das Ziel der Daten zu bestimmen\footnotemark\footnotetext{\Cite{TheTorProject}, The Tor Project}\footnotemark\footnotetext{\Cite{TorWhitePaper}, Tor: The Second-Generation Onion Routing}.
+Die mehrschichtige Verschlüsselung und das Multi-Hop-Routing in Tor bieten ein hohes Maß an Privatsphäre und Anonymität. Der Eingangsknoten und der Ausgangsknoten haben nur teilweise Informationen über die Daten und ihren Ursprung oder ihr Ziel. Das macht es für jeden, der den Netzwerkverkehr beobachtet, schwierig, die Quelle und das Ziel der Daten zu bestimmen\footnotemark\footnotetext{\cite{TheTorProject}, The Tor Project}\footnotemark\footnotetext{\cite{TorWhitePaper}, Tor: The Second-Generation Onion Router}.
 
 \subsubsection{VPN}
 
@@ -80,7 +85,7 @@ Ein virtuelles privates Netzwerk (VPN) ist eine Kommunikationsumgebung, die eine
 
 Kombiniert man diese Aspekte, ist ein VPN ein privates Netzwerk, das durch Virtualisierungsmethoden eingeführt wird. Es handelt sich um eine kontrollierte Kommunikationsumgebung, in der der Zugang nur einer bestimmten Interessengemeinschaft gestattet ist. Diese Umgebung wird durch die Partitionierung eines gemeinsamen Kommunikationsmediums gebildet. Während der Begriff "privates Netzwerk" irreführend sein könnte, da alle Netzwerke bis zu einem gewissen Grad auf einer gemeinsamen Infrastruktur beruhen, unterscheiden sich VPNs durch die Segmentierung der Kommunikation innerhalb einer gemeinsamen Infrastruktur.
 
-In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnotemark\footnotetext{\Cite{DefinitionOfVPN}, What is a VPN?}.
+In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnotemark\footnotetext{\cite{DefinitionOfVPN}, What is a VPN?}.
 
 \subsection{Anonyme Kommunikationssysteme}
 

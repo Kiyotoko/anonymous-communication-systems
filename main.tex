@@ -1,14 +1,12 @@
 \documentclass[a4paper]{article}
 \usepackage[a4paper,left=2.5cm,right=3.5cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{csquotes}
-\usepackage[style=numeric]{biblatex}
-\addbibresource{references.bib}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage[ngerman]{babel}
 \usepackage{titlesec}
 \usepackage{lipsum}
+
+\bibliographystyle{ieeetr}
 \counterwithin{figure}{section}
-\renewcommand{\refname}{Literaturverzeichnis}
-\renewcommand*\contentsname{Inhaltsverzeichnis}
 
 % \title{Content}
 \begin{document}
@@ -27,6 +25,7 @@
     \include{chapter/summary.tex}
     \include{chapter/discussion.tex}
     \include{chapter/appendix.tex}
-    \printbibliography[title = {Literaturverzeichnis}, heading=bibnumbered]
+
     \include{chapter/independence.tex}
+    \bibliography{references.bib}
 \end{document}
