@@ -1,27 +1,25 @@
 graph {
 	rankdir=LR
-	{B C A} -- {3 1 2} -- {5 4 6} -- {8 7 9} -- {Y Z X}
+	{U} -- {1 2} -- {3 4} -- {5 6} -- {S}
 	
 	subgraph {
 		cluster=true
 		label="Users"
 	
-		A B C
+		U
 	}
 	
 	subgraph {
 		cluster=true
-		label="Users"
+		label="Services"
 	
-		X Y Z
+		S
 	}
 	
 	subgraph {
-		cluster=true
 		label="Mixnet Nodes"
 	
 		1 2 3
 		4 5 6
-		7 8 9
 	}
 }

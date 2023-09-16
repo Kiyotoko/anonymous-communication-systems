@@ -1,25 +1,25 @@
 graph {
 	rankdir=LR
-	{B C A} -- {3 1 2} -- {Z X Y}
+
+	{U} -- {N} -- {S} [color=red]
 	
 	subgraph {
 		cluster=true
 		label="Users"
 	
-		A B C
+		U
 	}
 	
 	subgraph {
 		cluster=true
-		label="VPN Servers"
+		label="Services"
 	
-		1 2 3
+		S
 	}
 	
 	subgraph {
-		cluster=true
-		label="Users"
+		label="VPN Nodes"
 	
-		X Y Z
+		N
 	}
 }

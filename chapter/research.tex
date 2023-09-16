@@ -10,16 +10,23 @@ Overlay Networks können eine Reihe fortgeschrittener Funktionen anzubieten, die
 
 Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsprinzipien in Frage, die in der Vergangenheit die Platzierung von Funktionen und Diensten innerhalb der Internet-Architektur bestimmt haben. Indem sie neu definieren, wo und wie diese Funktionalitäten platziert werden, tragen Overlays zur Weiterentwicklung der Internetstruktur bei und ermöglichen die Anpassung an die sich ändernden Anforderungen von Benutzern und Anwendungen.
 
-Da Datenschutz und Anonymität im digitalen Zeitalter von größter Bedeutung sind, ermöglichen Overlay Networks es den Benutzern, ihre Privatsphäre online zu schützen, indem sie den Datenverkehr durch eine Reihe von Zwischenservern leiten und somit den Ursprung und das Ziel der Daten verschleiern. Sie schaffen so eine zusätzliche Barriere für Dritte, die versuchen, die Aktivitäten der Nutzer zu verfolgen.\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}
+Da Datenschutz und Anonymität im digitalen Zeitalter von größter Bedeutung sind, ermöglichen Overlay Networks es den Benutzern, ihre Privatsphäre online zu schützen, indem sie den Datenverkehr durch eine Reihe von Zwischenservern leiten und somit den Ursprung und das Ziel der Daten verschleiern. Sie schaffen so eine zusätzliche Barriere für Dritte, die versuchen, die Aktivitäten der Nutzer zu verfolgen\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}.
 
 \subsubsection{Mixnet}
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/mixnet.svg}
+    \caption{Mixnet}
+    \label{imgs:mixnet}
+\end{figure}
 
 Ein Mixnet ist ein System, das aus mehreren Servern besteht, die als MIXe oder MIX-Knoten bezeichnet werden. Jeder dieser MIXe ist mit einem öffentlichen Schlüssel verbunden. Der Hauptzweck eines MIX-Netzes besteht darin, eine Möglichkeit zu bieten, Nachrichten anonym und privat über ein Netzwerk zu versenden.
 
 Ein MIX-Netz funktioniert wie folgt:
 
 \begin{itemize}
-     
+
 \item Verschlüsselung von Nachrichten: Die Benutzer senden verschlüsselte Nachrichten an das MIX-Netz.
 
 \item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
@@ -53,6 +60,13 @@ Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welch
 
 \subsubsection{Tor}
 
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/tor.svg}
+    \caption{Tor}
+    \label{imgs:tor}
+\end{figure}
+
 Tor, die Abkürzung für "The Onion Router", ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die Anonymität im Internet verbessern soll, indem es den Internetverkehr über eine Reihe von Servern leitet, die von Freiwilligen betrieben werden und als Onion Router (ORs) bezeichnet werden. Dieses Netzwerk arbeitet als Overlay über der bestehenden Internet-Infrastruktur. Um die Funktionsweise von Tor besser erläutern, werden im nachfolgenden die wichtigsten Bestandteile und ihre Funktion dargelegt:
 
 \begin{itemize}
@@ -70,6 +84,13 @@ Ein Tor-Server kann einsehen, von welchem vorherigen Server die Nachricht wann e
 Die mehrschichtige Verschlüsselung und das Multi-Hop-Routing in Tor bieten ein hohes Maß an Privatsphäre und Anonymität. Der Eingangsknoten und der Ausgangsknoten haben nur teilweise Informationen über die Daten und ihren Ursprung oder ihr Ziel. Das macht es für jeden, der den Netzwerkverkehr beobachtet, schwierig, die Quelle und das Ziel der Daten zu bestimmen\footnotemark\footnotetext{\cite{TorWhitePaper}, Tor: The Second-Generation Onion Router}.
 
 \subsubsection{VPN}
+
+\begin{figure}[h!]
+    \centering
+    \includesvg{graph/vpn.svg}
+    \caption{VPN}
+    \label{imgs:vpn}
+\end{figure}
 
 Ein virtuelles privates Netzwerk (VPN) ist eine Kommunikationsumgebung, die eine Kombination aus Privatsphäre und Virtualisierung innerhalb einer gemeinsamen Netzwerkinfrastruktur bietet. Um dieses Konzept zu verstehen, wird nun die Erklärung im Text aufgeschlüsselt:
 

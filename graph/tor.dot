@@ -1,40 +1,30 @@
 graph {
 	rankdir=LR
-	{B C A} -- {1 2 3} -- {4 5 6} -- {7 8 9} -- {10 11 12} -- {Z X Y}
-	
-	subgraph {
-		cluster=true
-		label="Users"
-	
-		A B C
-	}
-	
-	subgraph {
-		cluster=true
-		label="TOR Nodes"
-	
-		subgraph {
-			cluster=true
-			label="TOR Entry Nodes"
-		
-			1 2 3
-		}
-		
-		4 5 6
-		7 8 9
-		
-		subgraph {
-			cluster=true
-			label="TOR Exit Nodes"
-		
-			10 11 12
-		}
-	}
 
+	{U} -- {2} -- {3 4} -- {6} -- {S} [style=invis]
+
+	{1} -- {4} -- {5} [style=invis]
+
+	{U} -- {1} -- {3} -- {5} -- {S} [color=red]
+	
 	subgraph {
 		cluster=true
 		label="Users"
 	
-		X Y Z
+		U
+	}
+	
+	subgraph {
+		cluster=true
+		label="Services"
+	
+		S
+	}
+	
+	subgraph {
+		label="Tor Nodes"
+	
+		1 2 3
+		4 5 6
 	}
 }
