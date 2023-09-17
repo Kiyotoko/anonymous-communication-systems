@@ -4,13 +4,11 @@
 
 \subsubsection{Overlay Networks}
 
-Ein Overlay Network besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der grundlegenden Internet-Infrastruktur abweichen oder mit ihr konkurrieren.\footnotemark\footnotetext{\cite{OverlayNetwork}, Overlay Network} Sie zeichnen sich dadurch aus, dass sie von organisierten Dritten betrieben werden können, die sogar Gemeinschaften von Endnutzern umfassen können.
+Ein Overlay Network besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der grundlegenden Internet-Infrastruktur abweichen oder mit ihr konkurrieren.\footnote{\cite{OverlayNetwork}, Overlay Network}
 
-Overlay Networks können eine Reihe fortgeschrittener Funktionen anzubieten, die über das hinausgehen, was das grundlegende Internet bietet. Sie können Mobilität, individuelles Routing, Quality of Service (QoS), neuartige Adressierung, verbesserte Sicherheit, Multicast und die Verteilung von Inhalten ermöglichen. So können Overlays beispielsweise Anwendungen unterstützen, die Anonymität erfordern, indem sie den Datenverkehr über zwischengeschaltete Server umleiten und so die wahre Quelle und das wahre Ziel der Daten verschleiern.
+Overlay-Netzwerke ermöglichen eine strukturierte virtuelle Topologie, die über der grundlegenden Transportprotokollebene liegt und eine deterministische Suche erleichtert sowie Konvergenz gewährleistet. Dadurch können sie eine Reihe fortgeschrittener Funktionen anbieten, die über das hinausgehen, was das grundlegende Internet mit seiner physischen Topologie bietet. Sie können Mobilität, individuelles Routing, Quality of Service (QoS), neuartige Adressierung, verbesserte Sicherheit, Multicast und die Verteilung von Inhalten ermöglichen. So können Overlays beispielsweise Anwendungen unterstützen, die Anonymität erfordern, indem sie den Datenverkehr über zwischengeschaltete Server umleiten und so die wahre Quelle und das wahre Ziel der Daten verschleiern.
 
-Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsprinzipien in Frage, die in der Vergangenheit die Platzierung von Funktionen und Diensten innerhalb der Internet-Architektur bestimmt haben. Indem sie neu definieren, wo und wie diese Funktionalitäten platziert werden, tragen Overlays zur Weiterentwicklung der Internetstruktur bei und ermöglichen die Anpassung an die sich ändernden Anforderungen von Benutzern und Anwendungen.
-
-Da Datenschutz und Anonymität im digitalen Zeitalter von größter Bedeutung sind, ermöglichen Overlay Networks es den Benutzern, ihre Privatsphäre online zu schützen, indem sie den Datenverkehr durch eine Reihe von Zwischenservern leiten und somit den Ursprung und das Ziel der Daten verschleiern. Sie schaffen so eine zusätzliche Barriere für Dritte, die versuchen, die Aktivitäten der Nutzer zu verfolgen\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}.
+Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsprinzipien wie P2P in Frage, die in der Vergangenheit die Platzierung von Funktionen und Diensten innerhalb der Internet-Architektur bestimmt haben\footnote{\cite{AlternativeToP2P}, Overlay Networks: A scalable alternative to P2P}. Indem sie neu definieren, wo und wie diese Funktionalitäten platziert werden, tragen Overlays zur Weiterentwicklung der Internetstruktur bei und ermöglichen die Anpassung an die sich ändernden Anforderungen von Benutzern und Anwendungen\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}.
 
 \subsubsection{Mixnet}
 
@@ -35,8 +33,7 @@ Ein MIX-Netz funktioniert wie folgt:
 
 \item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
 
-\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter
-\footnotemark\footnotetext{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
+\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
 
 \end{itemize}
 
@@ -50,7 +47,7 @@ MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt un
 
 \item Stop-and-Go-MIX-Netze: Hierbei handelt es sich um Varianten von MIX-Netzen, die kontrollierte Pausen in den Nachrichtenverarbeitungsfluss einführen, um die Sicherheit zu erhöhen.
 
-\item Verteilte "Flash-MIXe": Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
+\item Verteilte \glqq Flash-MIXe\grqq: Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
 
 \item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen\footnotemark\footnotetext{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
 
@@ -67,13 +64,13 @@ Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welch
     \label{imgs:tor}
 \end{figure}
 
-Tor, die Abkürzung für "The Onion Router", ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die Anonymität im Internet verbessern soll, indem es den Internetverkehr über eine Reihe von Servern leitet, die von Freiwilligen betrieben werden und als Onion Router (ORs) bezeichnet werden. Dieses Netzwerk arbeitet als Overlay über der bestehenden Internet-Infrastruktur. Um die Funktionsweise von Tor besser erläutern, werden im nachfolgenden die wichtigsten Bestandteile und ihre Funktion dargelegt:
+Tor, die Abkürzung für \glqq The Onion Router\grqq, ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die Anonymität im Internet verbessern soll, indem es den Internetverkehr über eine Reihe von Servern leitet, die von Freiwilligen betrieben werden und als Onion Router (ORs) bezeichnet werden. Dieses Netzwerk arbeitet als Overlay über der bestehenden Internet-Infrastruktur. Um die Funktionsweise von Tor besser erläutern, werden im nachfolgenden die wichtigsten Bestandteile und ihre Funktion dargelegt:
 
 \begin{itemize}
 
 \item Entry Nodes: Wenn sich ein Nutzer mit dem Tor-Netzwerk verbindet, wird sein Datenverkehr über einen Eingangsknoten geleitet, der der erste Kontaktpunkt mit dem Tor-Netzwerk ist. Dieser Knoten ist dafür verantwortlich, die äußerste Schicht der Verschlüsselung zu entfernen, wie das Schälen einer Zwiebel, um das nächste Ziel im Kreislauf zu enthüllen. Der Einstiegsknoten kennt die IP-Adresse des Benutzers und weiß, woher der Verkehr kommt. Aufgrund der Verschlüsselungsschichten kennt der Eingangsknoten jedoch nicht das endgültige Ziel der Daten.
 
-\item Circuit Construction: Um die Anonymität zu wahren, baut Tor "circuits" auf, indem es mehrere Onion-Router aneinander kettet. Jeder Router weiß nur über den vorherigen und den nächsten Router im Kreislauf Bescheid, um sicherzustellen, dass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Eingangsknoten kennt daher nur die IP-Adresse des Benutzers und den nächsten Router im Kreislauf, nicht aber das endgültige Ziel.
+\item Circuit Construction: Um die Anonymität zu wahren, baut Tor \glqq circuits\grqq\ auf, indem es mehrere Onion-Router aneinander kettet. Jeder Router weiß nur über den vorherigen und den nächsten Router im Kreislauf Bescheid, um sicherzustellen, dass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Eingangsknoten kennt daher nur die IP-Adresse des Benutzers und den nächsten Router im Kreislauf, nicht aber das endgültige Ziel.
 
 \item Exit Nodes: Der letzte Knoten in der Schaltung ist der Ausgangsknoten. Der Ausgangsknoten ist dafür verantwortlich, die Anfrage des Benutzers an das gewünschte Ziel im Internet zu senden. Zu diesem Zeitpunkt sind die Daten entschlüsselt worden und liegen in ihrer ursprünglichen Form vor. Daher kennt der Ausgangsknoten das endgültige Ziel des Datenverkehrs, hat aber keine Informationen über die IP-Adresse des Benutzers oder die ursprüngliche Quelle.
 
@@ -98,19 +95,19 @@ Ein virtuelles privates Netzwerk (VPN) ist eine Kommunikationsumgebung, die eine
 
 \item Netzwerk: Ein Netzwerk besteht aus Geräten (wie Computern, Druckern, Routern), die mit verschiedenen Methoden kommunizieren können. Diese Kommunikation kann über verschiedene Standorte hinweg erfolgen und wird durch elektronische Signalisierungsspezifikationen und -protokolle ermöglicht.
 
-\item Privat: Im Zusammenhang mit VPNs bedeutet "privat", dass die Kommunikation zwischen Geräten vertraulich ist. Diejenigen, die nicht an diesem privaten Austausch teilnehmen, haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung des Datenschutzes und der Datensicherheit ist bei der Implementierung von VPNs von entscheidender Bedeutung.
+\item Privat: Im Zusammenhang mit VPNs bedeutet \glqq privat\grqq, dass die Kommunikation zwischen Geräten vertraulich ist. Diejenigen, die nicht an diesem privaten Austausch teilnehmen, haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung des Datenschutzes und der Datensicherheit ist bei der Implementierung von VPNs von entscheidender Bedeutung.
 
-\item Virtuell: "Virtuell" bezieht sich auf simulierte oder künstliche Aspekte, die von Computersystemen geschaffen werden, um gemeinsame Ressourcen zu verwalten. Bei VPNs beinhaltet die Virtualisierung die private Kommunikation über eine gemeinsam genutzte Netzinfrastruktur. Das private Netz wird durch logische Partitionierung der gemeinsamen Ressource aufgebaut, nicht durch dedizierte physische Schaltungen.
+\item Virtuell: \glqq Virtuell\grqq\ bezieht sich auf simulierte oder künstliche Aspekte, die von Computersystemen geschaffen werden, um gemeinsame Ressourcen zu verwalten. Bei VPNs beinhaltet die Virtualisierung die private Kommunikation über eine gemeinsam genutzte Netzinfrastruktur. Das private Netz wird durch logische Partitionierung der gemeinsamen Ressource aufgebaut, nicht durch dedizierte physische Schaltungen.
 
 \item Diskret: VPNs sind diskrete Netzwerke, die getrennt über eine gemeinsam genutzte Infrastruktur arbeiten. Sie bieten exklusive Kommunikationsumgebungen ohne gemeinsame Verbindungspunkte.
 
 \end{itemize}
 
-Kombiniert man diese Aspekte, ist ein VPN ein privates Netzwerk, das durch Virtualisierungsmethoden eingeführt wird. Es handelt sich um eine kontrollierte Kommunikationsumgebung, in der der Zugang nur einer bestimmten Interessengemeinschaft gestattet ist. Diese Umgebung wird durch die Partitionierung eines gemeinsamen Kommunikationsmediums gebildet. Während der Begriff "privates Netzwerk" irreführend sein könnte, da alle Netzwerke bis zu einem gewissen Grad auf einer gemeinsamen Infrastruktur beruhen, unterscheiden sich VPNs durch die Segmentierung der Kommunikation innerhalb einer gemeinsamen Infrastruktur.
+Kombiniert man diese Aspekte, ist ein VPN ein privates Netzwerk, das durch Virtualisierungsmethoden eingeführt wird. Es handelt sich um eine kontrollierte Kommunikationsumgebung, in der der Zugang nur einer bestimmten Interessengemeinschaft gestattet ist. Diese Umgebung wird durch die Partitionierung eines gemeinsamen Kommunikationsmediums gebildet. Während der Begriff \glqq privates Netzwerk\grqq\ irreführend sein könnte, da alle Netzwerke bis zu einem gewissen Grad auf einer gemeinsamen Infrastruktur beruhen, unterscheiden sich VPNs durch die Segmentierung der Kommunikation innerhalb einer gemeinsamen Infrastruktur.
 
 Ein VPN-Server kann einsehen, was wann von welchem Nutzer an welchen Server gesendet wird. Ein solcher Server wäre in der Lage, sämtliche relavanten Informationen zu erfassen und zu speichern.
 
-In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnotemark\footnotetext{\cite{DefinitionOfVPN}, What is a VPN?}.
+In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnote{\cite{DefinitionOfVPN}, What is a VPN?}.
 
 \subsection{Anonyme Kommunikationssysteme}
 
