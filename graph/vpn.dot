@@ -1,7 +1,7 @@
 graph {
 	rankdir=LR
 
-	{U} -- {N} -- {S} [color=red]
+	{U} -- {N} -- {S}
 	
 	subgraph {
 		cluster=true
