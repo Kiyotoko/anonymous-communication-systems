@@ -1,0 +1,68 @@
+\section{Mixnet}
+
+\subsection{Topologie}
+
+\subsubsection{Mixnets und Overlay Networks}
+
+Ein Overlay Network besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der grundlegenden Internet-Infrastruktur abweichen oder mit ihr konkurrieren\footnote{\cite{OverlayNetwork}, Overlay Network}.
+
+Overlay-Netzwerke ermöglichen eine strukturierte virtuelle Topologie, die über der grundlegenden Transportprotokollebene liegt und eine deterministische Suche erleichtert sowie Konvergenz gewährleistet. Dadurch können sie eine Reihe fortgeschrittener Funktionen anbieten, die über das hinausgehen, was das grundlegende Internet mit seiner physischen Topologie bietet. Sie können Mobilität, individuelles Routing, Quality of Service (QoS), neuartige Adressierung, verbesserte Sicherheit, Multicast und die Verteilung von Inhalten ermöglichen. So können Overlays beispielsweise Anwendungen unterstützen, die Anonymität erfordern, indem sie den Datenverkehr über zwischengeschaltete Server umleiten und so die wahre Quelle und das wahre Ziel der Daten verschleiern.
+
+Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsprinzipien wie P2P in Frage, die in der Vergangenheit die Platzierung von Funktionen und Diensten innerhalb der Internet-Architektur bestimmt haben\footnote{\cite{AlternativeToP2P}, Overlay Networks: A scalable alternative to P2P}. Indem sie neu definieren, wo und wie diese Funktionalitäten platziert werden, tragen Overlays zur Weiterentwicklung der Internetstruktur bei und ermöglichen die Anpassung an die sich ändernden Anforderungen von Benutzern und Anwendungen\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}.
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/mixnet.svg}
+    \caption{Mixnet}
+    \label{imgs:mixnet}
+\end{figure}
+
+Ein Mixnet ist ein System, das aus mehreren Servern besteht, die als MIXe oder MIX-Knoten bezeichnet werden. Jeder dieser MIXe ist mit einem öffentlichen Schlüssel verbunden. Der Hauptzweck eines MIX-Netzes besteht darin, eine Möglichkeit zu bieten, Nachrichten anonym und privat über ein Netzwerk zu versenden.
+
+Ein MIX-Netz funktioniert wie folgt:
+
+\begin{itemize}
+
+\item Verschlüsselung von Nachrichten: Die Benutzer senden verschlüsselte Nachrichten an das MIX-Netz.
+
+\item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
+
+\item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann in Stapeln gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen.
+
+\item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
+
+\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
+
+\end{itemize}
+
+Die Bedeutung dieses Prozesses liegt in seiner Fähigkeit, den Kommunikationsteilnehmern Anonymität zu bieten. Ein Beobachter, selbst wenn er die gesamte Kommunikation zwischen MIXen belauschen kann, würde es aufgrund der durch den Permutationsprozess eingeführten Randomisierung äußerst schwierig finden, bestimmte Nachrichten mit ihren ursprünglichen Absendern und Empfängern zu verknüpfen.
+
+Die Sicherheit von MIXen ist von grundlegender Bedeutung, dass selbst passive Angreifer (die nur die Kommunikation abhören) die vom MIX-Netz gebotene Anonymität nicht ohne weiteres brechen können. Die Sicherheitseigenschaft garantiert, dass ein Lauscher zwar einige Informationen aus der Beobachtung der Nachrichten zwischen MIXen gewinnen kann, dieser Vorteil aber vernachlässigbar ist und keine genaue Erkennung der Sender-Empfänger-Beziehungen ermöglicht.
+
+\subsubsection{Weiterentwicklungen}
+
+MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt und zu verschiedenen Forschungsrichtungen und Verbesserungen geführt:
+
+\begin{itemize}
+
+\item Stop-and-Go-MIX-Netze: Hierbei handelt es sich um Varianten von MIX-Netzen, die kontrollierte Pausen in den Nachrichtenverarbeitungsfluss einführen, um die Sicherheit zu erhöhen.
+
+\item Verteilte \glqq Flash-MIXe\grqq: Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
+
+\item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen\footnotemark\footnotetext{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
+
+\end{itemize}.
+
+Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welchem Server es weitergeleitet wird. Abhängig vom MIX-Netz kann ein Knoten jedoch weder den Zeitpunkt noch die Größe des ursprüngliche Paketes bestimmen. Auch kann ein Knoten nicht feststellen, ob ein Nutzer überhaupt kommuniziert.
+
+\subsection{Vorteile}
+
+\begin{itemize}
+    \item Timig Attacks sind im Gegensatz zu anderen Systemen nicht möglich, da die die Reihenfolge der Nachrichten, indem diese ankommen, zufällig verändert und verzögert wird. Dadurch entpsricht die Reihenfolge der abgesendeten Nachrichten nicht der Reihenfolge der Nachrichten, die angekommen sind, wodurch diese Informationen gegenüber Dritten unbekannt ist. Da alle Knoten dies Anwenden, können äußere als auch einzelne Knoten selbst nicht die Nachricht nachverfolgen\footnote{\cite{MixNetworksSecureApplications}, A Survey on Mix Networks and Their Secure Applications}.
+    \item Es kann nicht festgestellt werden, ob überhaupt kommuniziert wird, da zusätzlich Fake Traffik gesendet wird.
+    \item Mixnets können gut monetarisierbar sein. Nym stellt dafür ein System vor, wo auf dem Mixnet eine Blockchain für Cryptowährungen gebaut sind. Dabei werden gewinne aus der Blockchain mit den Server Hostern geteilt. Dies ermöglicht es, finanziell die Kosten der Hoster zu decken und somit eine langfristig nachhaltige Finanzierung zu gewährleisten\footnote{\cite{RewardSharingForMixnets}, Reward Sharing for Mixnets}.
+\end{itemize}
+
+\subsection{Nachteile}
+
+Latenz ist bei Mixnets deutlich höher. Dies liegt daran, dass zwischen jedem Knoten die Daten neu verschlüsselt werden müssen Umso häufiger eine Nachricht Verschlüsselt werden muss, umso größer ist auch die Verzögerung, die Entsteht\footnote{\cite{EffectivenessOfMixnets}}. Hinzu kommt, dass bei Stop-and-Go-MIX-Netze die Verzögerung die Latenz zusätzlich erhöht.
