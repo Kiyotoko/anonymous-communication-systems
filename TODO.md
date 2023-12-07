@@ -1,0 +1,10 @@
+- [ ] Beschreibung zu Abbildungen überarbeiten
+- [ ] Vorteil "ob überhaupt kommuniziert wird" erklären
+- [ ] Nachteile Mixnet überarbeiten
+- [ ] Vorteile Tor besser belegen und erklären
+- [ ] Nachteile Tor strukturieren, sowie Angriffe hinzufügen
+- [ ] Nachteile VPN besser erklären
+- [ ] Auswertung schreiben
+- [ ] Zusammenfassung schreiben
+- [ ] Diskussion schreiben
+- [ ] Abstract schreiben

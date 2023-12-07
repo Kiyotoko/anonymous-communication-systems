@@ -1,0 +1,29 @@
+graph {
+	rankdir=LR
+	{U} -- {1} -- {3}[color=blue]
+    {U} -- {2} -- {3}[color=red]
+    {3} -- {5} -- {S}[color=darkorchid]
+	{3} -- {6} -- {S}[color=darkorchid]
+    {1 2} -- {4} -- {5 6}
+	
+	subgraph {
+		cluster=true
+		label="Users"
+	
+		U
+	}
+	
+	subgraph {
+		cluster=true
+		label="Services"
+	
+		S
+	}
+	
+	subgraph {
+		label="Mixnet Nodes"
+	
+		1 2 3
+		4 5 6
+	}
+}

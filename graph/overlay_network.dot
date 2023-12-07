@@ -1,7 +1,7 @@
 graph {
 	rankdir=TD
 
-    {O1} -- {O6}[color = red]
+    {O1} -- {O6}[color=red]
 
     subgraph {
 		label="Overlay"
@@ -14,8 +14,8 @@ graph {
 
     {U1} -- U2 -- U4 -- {U6}
     {U1} -- U3 -- U5 -- {U6}
-    {U2} -- {U5}[style = invis]
-    {U4} -- {U3}[style = invis]
+    {U2} -- {U5}[style=invis]
+    {U4} -- {U3}[style=invis]
 
     subgraph {
 		label="Underlay"

@@ -5,7 +5,7 @@
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/tor.svg}
-    \caption{Tor}
+    \caption{Tor Topologie}
     \label{imgs:tor}
 \end{figure}
 
@@ -20,6 +20,13 @@ Tor ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die An
 \item Exit Nodes: Der letzte Knoten in der Schaltung ist der Ausgangsknoten. Der Ausgangsknoten ist dafür verantwortlich, die Anfrage des Benutzers an das gewünschte Ziel im Internet zu senden. Zu diesem Zeitpunkt sind die Daten entschlüsselt worden und liegen in ihrer ursprünglichen Form vor. Daher kennt der Ausgangsknoten das endgültige Ziel des Datenverkehrs, hat aber keine Informationen über die IP-Adresse des Benutzers oder die ursprüngliche Quelle.
 
 \end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/tor_transfer.svg}
+    \caption{Tor Datentransfer}
+    \label{imgs:tor_transfer}
+\end{figure}
 
 Ein Tor-Server kann einsehen, von welchem vorherigen Server die Nachricht wann erhalten wurde, wie groß sie ist, und welcher Server als nächstes die Nachricht erhält. Darüber hinaus kann der Entry-Node den Sender und der Exit-Node den Empfänger einsehen kann.
 

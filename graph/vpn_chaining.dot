@@ -1,9 +1,8 @@
 graph {
 	rankdir=LR
 
-	{U} -- {2} -- {3 4} -- {6} -- {S} [style=dotted]
-	{1} -- {4} -- {5} [style=dotted]
-	{U} -- {1} -- {3} -- {5} -- {S}
+	{U} -- {N1} -- {N2}[color=red]
+	{N2} -- {Nk} -- {S}[color=red style=dotted]
 	
 	subgraph {
 		cluster=true
@@ -20,9 +19,8 @@ graph {
 	}
 	
 	subgraph {
-		label="Tor Nodes"
+		label="VPN Nodes"
 	
-		1 2 3
-		4 5 6
+		N1 N2 Nk
 	}
 }

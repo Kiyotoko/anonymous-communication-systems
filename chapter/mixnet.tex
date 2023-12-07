@@ -9,7 +9,7 @@ Ein Overlay Network besteht aus Servern, die über das Internet verteilt sind un
 \begin{figure}[h!]
     \centering
     \includesvg{graph/overlay_network.svg}
-    \caption{Das Overlay Network (Rote Kanten) erlaubt neue Funktionen über dem Underlay Network (Schwarze Kanten)}
+    \caption{Overlay Network erlaubt neue Funktionen über dem Underlay Network}
     \label{imgs:overlay_network}
 \end{figure}
 
@@ -20,7 +20,7 @@ Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsp
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/mixnet.svg}
-    \caption{Mixnet}
+    \caption{Mixnet Topologie}
     \label{imgs:mixnet}
 \end{figure}
 
@@ -29,35 +29,39 @@ Ein Mixnet ist ein System, das aus mehreren Servern besteht, die als MIXe oder M
 Ein MIX-Netz funktioniert wie folgt:
 
 \begin{itemize}
-
-\item Verschlüsselung von Nachrichten: Die Benutzer senden verschlüsselte Nachrichten an das MIX-Netz.
-
-\item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
-
-\item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann in Stapeln gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen.
-
-\item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
-
-\item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
-
+    \item Verschlüsselung von Nachrichten: Die Benutzer senden verschlüsselte Nachrichten an das MIX-Netz.
+    \item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
+    \item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann in Stapeln gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen.
+    \item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
+    \item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
 \end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includesvg{graph/mixnet_stack.svg}
+    \caption{Mixnet ändert in einem Stapel die Permutation}
+    \label{imgs:mixnet_stack}
+\end{figure}
 
 Die Bedeutung dieses Prozesses liegt in seiner Fähigkeit, den Kommunikationsteilnehmern Anonymität zu bieten. Ein Beobachter, selbst wenn er die gesamte Kommunikation zwischen MIXen belauschen kann, würde es aufgrund der durch den Permutationsprozess eingeführten Randomisierung äußerst schwierig finden, bestimmte Nachrichten mit ihren ursprünglichen Absendern und Empfängern zu verknüpfen.
 
-Die Sicherheit von MIXen ist von grundlegender Bedeutung, dass selbst passive Angreifer (die nur die Kommunikation abhören) die vom MIX-Netz gebotene Anonymität nicht ohne weiteres brechen können. Die Sicherheitseigenschaft garantiert, dass ein Lauscher zwar einige Informationen aus der Beobachtung der Nachrichten zwischen MIXen gewinnen kann, dieser Vorteil aber vernachlässigbar ist und keine genaue Erkennung der Sender-Empfänger-Beziehungen ermöglicht.
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/mixnet_transfer.svg}
+    \caption{Mixnet Datentransfer}
+    \label{imgs:mixnet_transfer}
+\end{figure}
+
+Die Sicherheit von MIXen ist von grundlegender Bedeutung, dass selbst passive Angreifer (die nur die Kommunikation abhören) die vom MIX-Netz gebotene Anonymität nicht ohne weiteres brechen können. Die Sicherheitseigenschaft garantiert, dass ein Dritte zwar Informationen aus der Beobachtung der Nachrichten zwischen MIXen gewinnen könne, dieser Vorteil aber vernachlässigbar ist und keine genaue Erkennung der Sender-Empfänger-Beziehungen ermöglicht.
 
 \subsubsection{Weiterentwicklungen}
 
 MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt und zu verschiedenen Forschungsrichtungen und Verbesserungen geführt:
 
 \begin{itemize}
-
-\item Stop-and-Go-MIX-Netze: Hierbei handelt es sich um Varianten von MIX-Netzen, die kontrollierte Pausen in den Nachrichtenverarbeitungsfluss einführen, um die Sicherheit zu erhöhen.
-
-\item Verteilte \glqq Flash-MIXe\grqq: Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
-
-\item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen\footnotemark\footnotetext{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
-
+    \item Stop-and-Go-MIX-Netze: Hierbei handelt es sich um Varianten von MIX-Netzen, die kontrollierte Pausen in den Nachrichtenverarbeitungsfluss einführen, um die Sicherheit zu erhöhen.
+    \item Verteilte \glqq Flash-MIXe\grqq: Hier wird der Mischprozess auf mehrere Server verteilt, um die Effizienz und Anonymität zu verbessern. Es wurden jedoch auch Schwachstellen in diesen Systemen festgestellt.
+    \item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Privatsphäre und Sicherheit zu erreichen\footnote{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
 \end{itemize}.
 
 Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welchem Server es weitergeleitet wird. Abhängig vom MIX-Netz kann ein Knoten jedoch weder den Zeitpunkt noch die Größe des ursprüngliche Paketes bestimmen. Auch kann ein Knoten nicht feststellen, ob ein Nutzer überhaupt kommuniziert.
@@ -72,4 +76,7 @@ Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welch
 
 \subsection{Nachteile}
 
-Latenz ist bei Mixnets deutlich höher. Dies liegt daran, dass zwischen jedem Knoten die Daten neu verschlüsselt werden müssen Umso häufiger eine Nachricht Verschlüsselt werden muss, umso größer ist auch die Verzögerung, die Entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}. Hinzu kommt, dass bei Stop-and-Go-MIX-Netze die Verzögerung die Latenz zusätzlich erhöht.
+\begin{itemize}
+    \item Latenz ist bei Mixnets deutlich höher. Dies liegt daran, dass zwischen jedem Knoten die Daten neu verschlüsselt werden müssen Umso häufiger eine Nachricht Verschlüsselt werden muss, umso größer ist auch die Verzögerung, die Entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}. Hinzu kommt, dass bei Stop-and-Go-MIX-Netze die Verzögerung die Latenz zusätzlich erhöht.
+    \item Der reale Durchsatz ist geringer als vergleichbare Systeme. Als realer Durchsatz wird der Durchsatz an echten Nachrichten bezeichnet, Fake Traffik zählt somit nicht darunter.
+\end{itemize}
