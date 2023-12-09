@@ -8,3 +8,4 @@
 - [ ] Zusammenfassung schreiben
 - [ ] Diskussion schreiben
 - [ ] Abstract schreiben
+- [ ] VPN Chaining erklären

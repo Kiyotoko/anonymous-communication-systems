@@ -38,6 +38,9 @@ In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, 
     \label{imgs:vpn_chaining}
 \end{figure}
 
+VPNs können miteinander verbunden werden. Somit wird der gesamte Datenverkehr nicht länger über nur noch einen Server geleitet, sondern es werden hier mehrere Server miteinander verkettet. Man spricht hier von VPN Chaining. Die einzelnen VPN Server sind voneinander unabhängig. Dadurch erzielt man eine vergleichbare Struktur wie Tor. Alternativ können VPNs auch dafür genutzt werden, um sich mit Tor statt mit anderen VPNs zu verbinden, wodurch eine zusätzliche Sicherheit gegenüber dem Entry Node erzielt. VPN Chaining dient somit als zusätzliche Sicherheit\footnote{\cite{VPNChains}, Method of Building Dynamic Multi-Hop VPN Chains for Ensuring Security of Terminal Access Systems}.
+zusätzliche dazu haben VPNs noch folgende Vorteile:
+
 \begin{itemize}
     \item Geoblocking: Anonyme Kommunikationssysteme ermöglichen es den Nutzern, geografische Beschränkungen zu überwinden, die oft durch Geoblocking-Maßnahmen auferlegt werden. Indem sie ihren Standort verschleiern, können Nutzer auf Inhalte und Dienste zugreifen, die normalerweise auf bestimmte Regionen beschränkt sind. Dies ist besonders nützlich für Menschen, die auf reisespezifische oder länderspezifische Inhalte zugreifen möchten, unabhängig von ihrem Aufenthaltsort.
     \item Performance: Topologie erlaubt relativ niedrige Latenz als auch hohen Durchsatz, da Datenverkehr nur über einen Server umgeleitet wird. Im Vergleich zur Performance ohne anonyme Kommunikationssysteme wird somit der Datenverkehr nur einmal zusätzlich verschlüsselt.
