@@ -1,6 +1,8 @@
 \section{VPN}
+\label{chap:vpn}
 
 \subsection{Topologie}
+\label{chap:vpn_topology}
 
 \begin{figure}[h!]
     \centering
@@ -12,15 +14,10 @@
 Ein virtuelles privates Netzwerk (VPN) ist eine Kommunikationsumgebung, die eine Kombination aus Privatsphäre und Virtualisierung innerhalb einer gemeinsamen Netzwerkinfrastruktur bietet. Um dieses System zu erklären, werden zunächst die Bestandteile des Begriffes einzeln erklärt:
 
 \begin{itemize}
-
-\item Netzwerk: Ein Netzwerk besteht aus Geräten (wie Computern, Druckern, Routern), die mit verschiedenen Methoden kommunizieren können. Diese Kommunikation kann über verschiedene Standorte hinweg erfolgen und wird durch elektronische Signalisierungsspezifikationen und -protokolle ermöglicht.
-
-\item Privat: Im Zusammenhang mit VPNs bedeutet \glqq privat\grqq, dass die Kommunikation zwischen Geräten vertraulich ist. Diejenigen, die nicht an diesem privaten Austausch teilnehmen, haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung des Datenschutzes und der Datensicherheit ist bei der Implementierung von VPNs von entscheidender Bedeutung.
-
-\item Virtuell: \glqq Virtuell\grqq\ bezieht sich auf simulierte oder künstliche Aspekte, die von Computersystemen geschaffen werden, um gemeinsame Ressourcen zu verwalten. Bei VPNs beinhaltet die Virtualisierung die private Kommunikation über eine gemeinsam genutzte Netzinfrastruktur. Das private Netz wird durch logische Partitionierung der gemeinsamen Ressource aufgebaut, nicht durch dedizierte physische Schaltungen.
-
-\item Diskret: VPNs sind diskrete Netzwerke, die getrennt über eine gemeinsam genutzte Infrastruktur arbeiten. Sie bieten exklusive Kommunikationsumgebungen ohne gemeinsame Verbindungspunkte.
-
+    \item Netzwerk: Ein Netzwerk besteht aus Geräten (wie Computern, Druckern, Routern), die mit verschiedenen Methoden kommunizieren können. Diese Kommunikation kann über verschiedene Standorte hinweg erfolgen und wird durch elektronische Signalisierungsspezifikationen und -protokolle ermöglicht.
+    \item Privat: Im Zusammenhang mit VPNs bedeutet \glqq privat\grqq, dass die Kommunikation zwischen Geräten vertraulich ist. Diejenigen, die nicht an diesem privaten Austausch teilnehmen, haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung des Datenschutzes und der Datensicherheit ist bei der Implementierung von VPNs von entscheidender Bedeutung.
+    \item Virtuell: \glqq Virtuell\grqq\ bezieht sich auf simulierte oder künstliche Aspekte, die von Computersystemen geschaffen werden, um gemeinsame Ressourcen zu verwalten. Bei VPNs beinhaltet die Virtualisierung die private Kommunikation über eine gemeinsam genutzte Netzinfrastruktur. Das private Netz wird durch logische Partitionierung der gemeinsamen Ressource aufgebaut, nicht durch dedizierte physische Schaltungen.
+    \item Diskret: VPNs sind diskrete Netzwerke, die getrennt über eine gemeinsam genutzte Infrastruktur arbeiten. Sie bieten exklusive Kommunikationsumgebungen ohne gemeinsame Verbindungspunkte.
 \end{itemize}
 
 Kombiniert man diese Aspekte, ist ein VPN ein privates Netzwerk, das durch Virtualisierungsmethoden eingeführt wird. Es handelt sich um eine kontrollierte Kommunikationsumgebung, in der der Zugang nur einer bestimmten Interessengemeinschaft gestattet ist. Diese Umgebung wird durch die Partitionierung eines gemeinsamen Kommunikationsmediums gebildet. Während der Begriff \glqq privates Netzwerk\grqq\ irreführend sein könnte, da alle Netzwerke bis zu einem gewissen Grad auf einer gemeinsamen Infrastruktur beruhen, unterscheiden sich VPNs durch die Segmentierung der Kommunikation innerhalb einer gemeinsamen Infrastruktur.
@@ -30,6 +27,7 @@ Ein VPN-Server kann einsehen, was wann von welchem Nutzer an welchen Server gese
 In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnote{\cite{DefinitionOfVPN}, What is a VPN?}.
 
 \subsection{Vorteile}
+\label{chap:vpn_advantages}
 
 \begin{figure}[h!]
     \centering
@@ -48,6 +46,7 @@ zusätzliche dazu haben VPNs noch folgende Vorteile:
 \end{itemize}
 
 \subsection{Nachteile}
+\label{chap:vpn_disadvantages}
 
 VPNs bieten Aufgrund ihrer Topologie verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei wird in Client-seitige Angriffe und Server-seitige Angriffe unterschieden:
 

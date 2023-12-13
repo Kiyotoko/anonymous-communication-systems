@@ -4,7 +4,7 @@
 - [ ] Vorteile Tor besser belegen und erklären
 - [ ] Nachteile Tor strukturieren, sowie Angriffe hinzufügen
 - [ ] Nachteile VPN besser erklären
-- [ ] Auswertung schreiben
+- [ ] Auswertung Stichpunkte in Sätze mit Erklärung ausschreiben
 - [ ] Zusammenfassung schreiben
 - [ ] Diskussion schreiben
 - [ ] Abstract schreiben

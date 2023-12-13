@@ -1,10 +1,13 @@
 \section{Mixnet}
+\label{chap:mixnet}
 
 \subsection{Topologie}
+\label{chap:mixnet_topology}
 
 \subsubsection{Mixnets und Overlay Networks}
+\label{chap:mixnet_overlay}
 
-Ein Overlay Network besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Dies bedeutet, dass sie über eine bereits bestehende Topologie (Underlay) eine neue Virtuelle Topologie drüberspannen (Overlay). Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\footnote{\cite{OverlayNetwork}, Overlay Network}.
+Ein Overlay Network (Abbildung \ref{imgs:overlay_network}) besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Dies bedeutet, dass sie über eine bereits bestehende Topologie (Underlay) eine neue Virtuelle Topologie drüberspannen (Overlay). Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\footnote{\cite{OverlayNetwork}, Overlay Network}.
 
 \begin{figure}[h!]
     \centering
@@ -31,7 +34,7 @@ Ein MIX-Netz funktioniert wie folgt:
 \begin{itemize}
     \item Verschlüsselung von Nachrichten: Die Benutzer senden verschlüsselte Nachrichten an das MIX-Netz.
     \item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
-    \item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann in Stapeln gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen.
+    \item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann in Stapeln gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen (Abbildung \ref{imgs:mixnet_stack}).
     \item Entfernen der Identität des Absenders: Vor der Weiterleitung der Nachrichten entfernt jeder MIX alle Informationen, die den Absender identifizieren könnten, wie z. B. den Namen des Absenders und andere identifizierende Details. Dieser Schritt erhöht die Anonymität weiter.
     \item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
 \end{itemize}
@@ -55,6 +58,7 @@ Die Bedeutung dieses Prozesses liegt in seiner Fähigkeit, den Kommunikationstei
 Die Sicherheit von MIXen ist von grundlegender Bedeutung, dass selbst passive Angreifer (die nur die Kommunikation abhören) die vom MIX-Netz gebotene Anonymität nicht ohne weiteres brechen können. Die Sicherheitseigenschaft garantiert, dass ein Dritte zwar Informationen aus der Beobachtung der Nachrichten zwischen MIXen gewinnen könne, dieser Vorteil aber vernachlässigbar ist und keine genaue Erkennung der Sender-Empfänger-Beziehungen ermöglicht.
 
 \subsubsection{Weiterentwicklungen}
+\label{chap:mixnet_enhancements}
 
 MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt und zu verschiedenen Forschungsrichtungen und Verbesserungen geführt:
 
@@ -67,16 +71,18 @@ MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt un
 Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welchem Server es weitergeleitet wird. Abhängig vom MIX-Netz kann ein Knoten jedoch weder den Zeitpunkt noch die Größe des ursprüngliche Paketes bestimmen. Auch kann ein Knoten nicht feststellen, ob ein Nutzer überhaupt kommuniziert.
 
 \subsection{Vorteile}
+\label{chap:mixnet_advantages}
 
 \begin{itemize}
-    \item Timig Attacks sind im Gegensatz zu anderen Systemen nicht möglich, da die die Reihenfolge der Nachrichten, indem diese ankommen, zufällig verändert und verzögert wird. Dadurch entpsricht die Reihenfolge der abgesendeten Nachrichten nicht der Reihenfolge der Nachrichten, die angekommen sind, wodurch diese Informationen gegenüber Dritten unbekannt ist. Da alle Knoten dies Anwenden, können äußere als auch einzelne Knoten selbst nicht die Nachricht nachverfolgen\footnote{\cite{MixNetworksSecureApplications}, A Survey on Mix Networks and Their Secure Applications}.
+    \item Timig Attacks sind im Gegensatz zu anderen Systemen nicht möglich, da die die Reihenfolge der Nachrichten, indem diese ankommen, zufällig verändert und verzögert wird (Siehe \ref{chap:tor_disatvantages}). Dadurch entpsricht die Reihenfolge der abgesendeten Nachrichten nicht der Reihenfolge der Nachrichten, die angekommen sind, wodurch diese Informationen gegenüber Dritten unbekannt ist. Da alle Knoten dies Anwenden, können äußere als auch einzelne Knoten selbst nicht die Nachricht nachverfolgen\footnote{\cite{MixNetworksSecureApplications}, A Survey on Mix Networks and Their Secure Applications}.
     \item Es kann nicht festgestellt werden, ob überhaupt kommuniziert wird, da zusätzlich Fake Traffik gesendet wird.
     \item Mixnets können gut monetarisierbar sein. Nym stellt dafür ein System vor, wo auf dem Mixnet eine Blockchain für Cryptowährungen gebaut sind. Dabei werden gewinne aus der Blockchain mit den Server Hostern geteilt. Dies ermöglicht es, finanziell die Kosten der Hoster zu decken und somit eine langfristig nachhaltige Finanzierung zu gewährleisten\footnote{\cite{RewardSharingForMixnets}, Reward Sharing for Mixnets}. Nym und ihre Implementierung von Mixnet spiegeln jedoch nicht die allgemeine Implementierung dar.
 \end{itemize}
 
 \subsection{Nachteile}
+\label{chap:mixnet_disadvantages}
 
 \begin{itemize}
-    \item Latenz ist bei Mixnets deutlich höher. Dies liegt daran, dass zwischen jedem Knoten die Daten neu verschlüsselt werden müssen Umso häufiger eine Nachricht Verschlüsselt werden muss, umso größer ist auch die Verzögerung, die Entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}. Hinzu kommt, dass bei Stop-and-Go-MIX-Netze die Verzögerung die Latenz zusätzlich erhöht.
+    \item Latenz ist bei Mixnets deutlich höher. Dies liegt daran, dass zwischen jedem Knoten die Daten neu verschlüsselt werden. Umso häufiger eine Nachricht Verschlüsselt wird, umso größer ist auch die Verzögerung, welche entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}. Hinzu kommt, dass bei Stop-and-Go-MIX-Netze die Verzögerung die Latenz zusätzlich erhöht.
     \item Der reale Durchsatz ist geringer als vergleichbare Systeme. Als realer Durchsatz wird der Durchsatz an echten Nachrichten bezeichnet, Fake Traffik zählt somit nicht darunter.
 \end{itemize}

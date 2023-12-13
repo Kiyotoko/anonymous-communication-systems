@@ -4,12 +4,37 @@
 
 \subsubsection{Anonymität}
 
+Mixnet bietet die höchste Stufe der Anonymität. Dies resultiert aus der effektiven Anwendung von Mixen und Verzögerungstechniken. Dadurch wird ermöglicht, Daten verschiedener Nutzer aus der perspektive Dritter gleich aussehen zulassen, sowie zu verhindern, dass Dritte sehen können, ob überhaupt kommuniziert wird.
+Im Vergleich dazu bietet Tor eine mittlere Anonymität. Obwohl verschiedene Angriffsmöglichkeiten existieren, erfordert das Durchbrechen der Anonymität den Übergriff auf mehrere Knotenpunkte. 
+Hingegen weist VPN eine geringere Anonymität auf, da sämtliche Daten zentral über einen Server umgeleitet werden. Dieser zentrale Punkt der Datenumleitung erleichtert potenziell die Identifikation von Nutzern im Vergleich zu fortschrittlicheren Anonymisierungstechnologien wie Mixnet und Tor, da hier nur ein Knoten Daten speichern muss.
+
 \subsubsection{Performance}
 
-Mixnet ist sehr langsam aufgrund von mehrfachen Verschlüsselungsverfahren bei den Sendern\footnote{\cite{EffectivenessOfMixnets}}.
+VPN ist sehr performant, da Daten nur zweimal zusätzlich verschlüsselt werden (1 mal von Nutzer zu Anbieter, und umgekehrt).
+Tor hat eine akzeptaple Performance. Auf der einen Seite verschlüsselt es zwischen allen Knoten das Datenpaket, wodurch es eine höhere Latenz als VPNs hat. Auf der anderen Seite verzögert es keine Nachrichten oder mixt diese, und es nutzt Circuit Constructions, wodurch der Datenverkehr einmal über eine Route festgelegt wird, und diese nicht immer wieder verändert wird.
+Mixnet ist sehr langsam aufgrund von mehrfachen Verschlüsselungsverfahren bei den Sendern. Es verzögert Nachrichten, mixt diese und wählt verschiede Routen, wodurch es eine hohe Latenz hat. Es hat einen etwas niedrigeren Durchsatz, da zusätzlich Fake-Traffik gesendet und verarbeitet wird.
 
 \subsubsection{Dezentralisierung}
 
+Mixnet als auch Tor sind weitgehend dezentralisiert, abgesehen von einer zentralen Serverliste. Die Ausgestaltung minimiert die Abhängigkeit von zentralen Kontrollpunkten und fördert eine verteilte Struktur, was die Widerstandsfähigkeit gegenüber einzelnen Angriffspunkten erhöht.
+Im Gegensatz dazu präsentiert sich VPN als vollständig zentralisiert, da sämtliche Daten über einen einzigen Server laufen. Diese zentrale Datenverarbeitung führt zu einer erhöhten Anfälligkeit, da die gesamte Kommunikation über einen einzigen Punkt abgewickelt wird. Im Vergleich zu Mixnet und Tor, die auf dezentralen Prinzipien basieren, fehlt es VPN an einer breiten Verteilung und ist somit weniger widerstandsfähig gegenüber potenziellen Schwachstellen oder Angriffen.
+
 \subsubsection{Skalierbarkeit}
 
+Mixnet ist sehr gut Skalierbarkeit, da bei steigendem Datenaufkommen einzelne Daten immer schwerer verfolgbar sind. Dies ermöglicht eine effiziente Handhabung höherer Datenlasten, ohne dass die Integrität der Anonymität beeinträchtigt wird.
+Ebenso skaliert Tor effektiv, wobei die Anzahl der Knoten direkt mit der Zunahme der Anonymität korreliert. Die einfache Hinzufügung von Knoten erleichtert die Erweiterung des Netzwerks und verbessert somit die Anonymität insgesamt.
+VPN hat eine akzeptable Skalierbarkeit. Das Hinzufügen einzelner Knoten gestaltet sich einfach, da die einzelnen Server kaum voneinander abhängig sind. Im Gegensatz zu Mixnet oder Tor profitieren VPNs jedoch nicht direkt von einer höheren Nutzer- oder Serverzahl.
+
+\subsubsection{Monetarisierbarkeit}
+
+VPN kann einfach monetarisiert werden. Die Topologie, bei der alle Daten über einen zentralen Server laufen, erleichtert die Implementierung von Geschäftsmodellen, die auf monatlichen Abonnements oder anderen zahlungsbasierten Modellen basieren.
+In einigen Implementierungen kann auch Mixnet monetarisiert werden Die Priorität auf Anonymität erlauben einige Monetarisierungsmodelle wie Abomodelle nicht. Jedoch bietet Nym mit einem Reward Sharing System und der Block Chain die Möglichkeit, langfristig finanzielle Anreize zu bieten
+Abgesehen davon sind Tor und Mixnet nicht monetarisierbar. Die primäre Ausrichtung auf Anonymität und Dezentralisierung erschwert die Implementierung von zahlungsbasierten Modellen, die nicht die grundlegenden Prinzipien dieser Technologien beeinträchtigen.
+
 \subsection{Fehlerbetrachtung}
+
+Bei einem Qualitative Vergleich treten verschiedene unvermeidbare Fehler auf. Dabei wird unter anderem von modellhaften optimalen Bedingungen ausgegangen. Dabei können jedoch externe Faktoren außer Acht gelassen werden. Dieser Ansatz birgt dadurch das Risiko, dass eben dieser externe Kontext, beispielsweise geographisch bedingt, dafür sorg, dass reale Tests erheblich von den Modellannahmen abweichen. Eine qualitative Untersuchung des Modells kann daher zu erheblichen Diskrepanzen zwischen der Modellvorstellung und der realen Tests führen, da externe Einflüsse nicht angemessen berücksichtigt werden.
+
+Ein weiterer Aspekt betrifft die Generalisierung und Vereinfachung komplexer Prozesse durch das Modell. Hierbei besteht die Gefahr, dass möglicherweise unbekannte, aber entscheidende Faktoren bei der Modellbildung übersehen oder vernachlässigt werden. Diese Vereinfachung führt zu einer Verfälschung der Ergebnisse, da wichtige Elemente des komplexen Systems unberücksichtigt bleiben\footnote{\cite{DisadvantagesOfQualitativApproaches}, The advantages and disadvantages of using qualitative and quantitative approaches and methods in language “testing and assessment” research: A literature review}.
+
+Darüber hinaus muss für einen Vergleich die zu betrachtenden Objekte, hier anonyme Kommunikationssysteme, nach begrenzt vielen Kriterien untersuchen werden, um begründet ein Urteil zu fällen. Das Begrenzen der Kriterien wird zwangsläufig jedoch zu einer Unvollständigkeit in der Bewertung führen. Die gewählten Kriterien decken möglicherweise nicht alle relevanten Aspekte ab, und die Fokussierung auf nur wenige Kriterien kann zu einem sogenannten "False Balancing" führen. Dies bedeutet, dass das Modell zwar bestimmte Kriterien erfüllt, jedoch aufgrund der Vernachlässigung anderer wichtiger Faktoren eine unzureichend gewichtete Bewertung liefert, mansche Kriterien scheinbar also schwerer wiegen würden, als es tatsächlich der Fall ist.
