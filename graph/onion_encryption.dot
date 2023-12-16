@@ -1,0 +1,19 @@
+graph {
+    subgraph {
+        cluster=true
+        1[shape=none, width=0.3]
+        subgraph {
+            cluster=true
+            4[shape=none, width=0.3]
+            subgraph {
+                cluster=true
+                5[shape=none, width=0.3]
+                subgraph {
+                    cluster=true
+                    m[shape=none]
+                    S[shape=none, width=0.3]
+                }
+            }
+        }
+    }
+}

@@ -11,20 +11,29 @@
     \label{imgs:tor}
 \end{figure}
 
-Tor ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die Anonymität im Internet verbessern soll, indem es den Internetverkehr über eine Reihe von Servern leitet, die von Freiwilligen betrieben werden und als Onion Router (ORs) bezeichnet werden. Dieses Netzwerk arbeitet als Overlay wie auch Mixnet über der bestehenden Internet-Infrastruktur. Um die Funktionsweise von Tor besser erläutern, werden im nachfolgenden die wichtigsten Bestandteile und ihre Funktion dargelegt:
+Tor ist ein auf den Schutz der Privatsphäre ausgerichtetes Netzwerk, das die Anonymität im Internet verbessern soll, indem es den Internetverkehr über eine Reihe von Servern leitet, die von Freiwilligen betrieben werden und als Onion Router (ORs) bezeichnet werden.
+
+Tor unterteilt seine Knoten in Entry-, Middle- und Exit-Nodes, die jeweils ihre eigenen Funktionen haben.
 
 \begin{itemize}
-    \item Entry Nodes: Wenn sich ein Nutzer mit dem Tor-Netzwerk verbindet, wird sein Datenverkehr über einen Eingangsknoten geleitet, der der erste Kontaktpunkt mit dem Tor-Netzwerk ist. Dieser Knoten ist dafür verantwortlich, die äußerste Schicht der Verschlüsselung zu entfernen, wie das Schälen einer Zwiebel, um das nächste Ziel im Kreislauf zu enthüllen. Der Einstiegsknoten kennt die IP-Adresse des Benutzers und weiß, woher der Verkehr kommt. Aufgrund der Verschlüsselungsschichten kennt der Eingangsknoten jedoch nicht das endgültige Ziel der Daten.
-    \item Circuit Construction: Um die Anonymität zu wahren, baut Tor \glqq Circuits\grqq\ auf, indem es mehrere Onion-Router aneinander kettet. Jeder Router weiß nur über den vorherigen und den nächsten Router im Kreislauf bescheid, um sicherzustellen, dass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Eingangsknoten kennt daher nur die IP-Adresse des Benutzers und den nächsten Router im Kreislauf, nicht aber das endgültige Ziel. Die Strecke der Router bleibt dabei somit während des Datenverkehrs gleich, was den Hauptunterschied zu Mixnet darstellt.
+    \item Entry Nodes: Wenn sich ein Nutzer mit dem Tor-Netzwerk verbindet, wird sein Datenverkehr über einen Eingangsknoten geleitet, der der erste Kontaktpunkt mit dem Tor-Netzwerk ist. Dieser Knoten ist dafür verantwortlich, die äußerste Schicht der Verschlüsselung zu entfernen, wie das Schälen einer Zwiebel, um das nächste Ziel im \glqq Circuit\grqq\ zu enthüllen. Der Einstiegsknoten kennt die IP-Adresse des Benutzers und weiß, woher der Verkehr kommt. Aufgrund der Verschlüsselungsschichten kennt der Eingangsknoten jedoch nicht das endgültige Ziel der Daten.
+    \item Middle Nodes: Der mittlere Knoten verbindet den Entry-Node und Exit-Node.
     \item Exit Nodes: Der letzte Knoten in der Schaltung ist der Ausgangsknoten. Der Ausgangsknoten ist dafür verantwortlich, die Anfrage des Benutzers an das gewünschte Ziel im Internet zu senden. Zu diesem Zeitpunkt sind die Daten entschlüsselt worden und liegen in ihrer ursprünglichen Form vor. Daher kennt der Ausgangsknoten das endgültige Ziel des Datenverkehrs, hat aber keine Informationen über die IP-Adresse des Benutzers oder die ursprüngliche Quelle.
 \end{itemize}
 
-\begin{figure}[h!]
-    \centering
-    \includesvg[width=\linewidth]{graph/tor_transfer.svg}
-    \caption{Tor Datentransfer}
-    \label{imgs:tor_transfer}
+Tor nutzt Circuit Construction. Um die Anonymität zu wahren, baut Tor \glqq Circuits\grqq\ auf, indem es mehrere Knoten aneinander kettet. Dabei wird immer ein Entry-Node, Middle-Node und Exit-Node miteinander verbunden. Jeder Knoten weiß nur über den vorherigen und den nächsten Knoten im Circuit bescheid, um sicherzustellen, dass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Eingangsknoten kennt daher nur die IP-Adresse des Benutzers und den nächsten Knoten im Circuit, nicht aber das endgültige Ziel. Die Strecke der Router bleibt dabei somit während des Datenverkehrs gleich, was den Hauptunterschied zu Mixnet darstellt.
+
+\begin{figure}[!h]
+    \begin{displaymath}
+        m = \mathrm{enc}_{1}\Big(\mathrm{enc}_{3}\big(\mathrm{enc}_{5}(m_0)\big)\Big)
+    \end{displaymath}
+    \caption{Nachricht wird für den Pfad von Abbildung \ref{imgs:tor} verschlüsselt}
+    \label{equa:encryption}
 \end{figure}
+
+Hinzu kommt, das Tor für die Verschlüsselung Onion Encryption nutzt. Dabei wird eine Nachricht mit dem öffnetlichen Schlüssel des Exit Nodes verschlüsselt, dann mit dem öffnetlichen Schlüssel des Middle Nodes und zum Schluss mit dem öffentlichen Schlüssel des Entry Nodes (\ref{equa:encryption}). Dabei kann der Entry-Node nur seinen Teil der Nachricht entschlüsseln und diese dann weiter senden. Ziel dabei ist, dass nur der letzte Knotenpunkt die ursprüngliche Nachricht kennt und weiß, mit welchen Service sich der Nutzer verbinden möchte. Dies bedeutet jedoch auch, dass die Nachricht zwischen jedem Knoten verschlüsselt werden muss.
+
+Darüber hinaus wird bei den Nachrichten Padding genutzt. Beim Padding werden Nachrichten unterschiedlicher Länge auf die gleiche Größe $k$ gebracht, um zu verhindern, dass Nachrichten aufgrund ihrer Länge identifiziert werden. Alle Nachrichten, die kleiner als $k$ sind, werden mit solange mit Bits aufgefüllt, bis sie ihre Länge $k$ entspricht. Nachrichten, die größer sind als $k$ werden in mehrere kleinere Nachrichten aufgeteilt, die dann wieder aufgefüllt und aufgeteilt werden, bis ihre Länge $k$ entspricht.
 
 Ein Tor-Server kann einsehen, von welchem vorherigen Server die Nachricht wann erhalten wurde, wie groß sie ist, und welcher Server als nächstes die Nachricht erhält. Darüber hinaus kann der Entry-Node den Sender und der Exit-Node den Empfänger einsehen kann.
 
@@ -33,12 +42,19 @@ Die mehrschichtige Verschlüsselung und das Multi-Hop-Routing in Tor bieten ein 
 \subsection{Vorteile}
 \label{chap:tor_advantages}
 
-Tor erlaubt durch Circuit Construction hohe Anonymität und Performance. Zwischen jeden der Knoten werden die Datenpakete verschlüsselt. Da es kein Mixen der Datenpakete oder eine zusätzliche Verzögerung beim Absenden der Datenpakete gibt, ist die Latenz bei Tor niedrig.
+Tor erlaubt durch Circuit Construction hohe Anonymität und Performance. Zwischen jeden der Knoten werden die Datenpakete verschlüsselt.
 
-Der Erfolg von Angriffen auf das Tor-Netzwerk (Siehe \ref{chap:tor_disatvantages}) hängt unter anderem auch von der Anzahl an Entry- und Exit-Nodes ab. Mit einer größeren Anzahl an Knoten nimmt die Erfolgchance von Angriffen expotenziel ab. Somit können durch ein hohes Angebot an Knoten die Erfolgchance gegen Null gehen, wodurch Tor sehr sicher trotz verschiedener Angriffe wird.
+Der Erfolg von Angriffen auf das Tor-Netzwerk (Kapitel \ref{chap:tor_disatvantages}) hängt unter anderem auch von der Anzahl an Entry- und Exit-Nodes ab. Mit einer größeren Anzahl an Knoten nimmt die Erfolgchance von Angriffen expotenziel ab. Somit können durch ein hohes Angebot an Knoten die Erfolgchance gegen Null gehen, wodurch Tor sehr sicher trotz verschiedener Angriffe wird.
 
 \subsection{Nachteile}
 \label{chap:tor_disatvantages}
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/tor_transfer.svg}
+    \caption{Tor Datentransfer}
+    \label{imgs:tor_transfer}
+\end{figure}
 
 Tor bietet auf Grund seiner Topologie Möglichkeiten für verschiedene Angriffe. Exemplarisch werden hierbei zwei Angriffsmöglichkeiten vorgestellt:
 
@@ -63,5 +79,3 @@ Tor bietet auf Grund seiner Topologie Möglichkeiten für verschiedene Angriffe.
 
     JavaScript stellt hierbei exemplarisch nur eine Methode dar, Signale auszusenden und somit Daten zum deanymisieren zu sammeln. Andere Sprachen und Methoden sind ebenfalls möglich\footnote{\cite{BrowserBasedAttacksOnTor}, Browser-Based Attacks on Tor}.
 \end{itemize}
-
-Darüber hinaus kann Tor kaum monetarisiert werden. Es besitzt keine Blockchain und ist somit nicht für NFTs oder Crypto Currencies interresant. Es kann kein Abo-Modell für seine Nutzer anbieten, da dafür die Anmeldedaten der Nutzer zentral überprüft werden müssten. Dafür müssten jedoch mindestens die Entry Nodes die Anmeldedaten der Nutzer auch zentral überprüfen können, was dem Schutz der Privatsphäre widersprechen würde. Da die Knoten nicht von einem zentralen Unternehmen oder Organisation gehostet werden, können die Nutzerdaten erst gar nicht zentral überprüft werden. Das Tor Project hat eine Alternative durch Spendenaufrufe gefunden, um die Serverkosten finanziell nachhaltig zu gestalten, jedoch ist dies eine spezifische Lösung für das Projekt, die ermöglicht wurde durch seine Reichweite, und spiegelt nicht die Möglichkeiten der Topologie an sich dar.

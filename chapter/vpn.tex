@@ -7,7 +7,7 @@
 \begin{figure}[h!]
     \centering
     \includesvg{graph/vpn.svg}
-    \caption{VPN Topologie}
+    \caption{Bei VPNs werden Nutzer über einen VPN-Server mit ihren Services verbunden. Die Services können somit nicht mehr den Ursprung einer Anfrage sehen.}
     \label{imgs:vpn}
 \end{figure}
 
@@ -22,35 +22,40 @@ Ein virtuelles privates Netzwerk (VPN) ist eine Kommunikationsumgebung, die eine
 
 Kombiniert man diese Aspekte, ist ein VPN ein privates Netzwerk, das durch Virtualisierungsmethoden eingeführt wird. Es handelt sich um eine kontrollierte Kommunikationsumgebung, in der der Zugang nur einer bestimmten Interessengemeinschaft gestattet ist. Diese Umgebung wird durch die Partitionierung eines gemeinsamen Kommunikationsmediums gebildet. Während der Begriff \glqq privates Netzwerk\grqq\ irreführend sein könnte, da alle Netzwerke bis zu einem gewissen Grad auf einer gemeinsamen Infrastruktur beruhen, unterscheiden sich VPNs durch die Segmentierung der Kommunikation innerhalb einer gemeinsamen Infrastruktur.
 
-Ein VPN-Server kann einsehen, was wann von welchem Nutzer an welchen Server gesendet wird. Ein solcher Server wäre in der Lage, sämtliche relavanten Informationen zu erfassen und zu speichern.
+Hauptziel von VPNs ist es, zu verhindern, dass die Services feststellen können, von welchen Nutzern eine Nachricht kam. Ein Nutzer verbindet sich über den VPN-Server mit einem Service. Der Service sieht jedoch nur den VPN-Server, und nicht den Nutzer. Dadurch bleibt der Nutzer gegenüber dem Service anonym.
+Ein VPN-Server jedoch kann einsehen, was wann von welchem Nutzer an welchen Server gesendet wird. Ein solcher Server wäre in der Lage, sämtliche relavanten Informationen zu erfassen und zu speichern. Zwischen dem Server und dem Nutzer werden die Daten bei der Kommunikation verschlüsselt.
 
 In einem formalen Sinne wird ein VPN als eine Kommunikationsumgebung definiert, die den Zugang kontrolliert, um Peer-Verbindungen innerhalb einer bestimmten Interessengemeinschaft zu erleichtern. Diese Umgebung basiert auf der Partitionierung eines gemeinsam genutzten Kommunikationsmediums, das nicht-exklusive Dienste für das Netz bereitstellt\footnote{\cite{DefinitionOfVPN}, What is a VPN?}.
+
+\subsection{VPN Chaining}
+\label{chap:vpn_chaining}
+
+\begin{figure}
+    \centering
+    \includesvg[width=\linewidth]{graph/vpn_chaining.svg}
+    \caption{Durch VPN Chainingn werden beliebig viele VPN Server miteinander verbunden um zu verhindern, das ein einzelner Server sowohl Ursprung als auch Ziel einer Nachricht kennt.}
+    \label{imgs:vpn_chaining}
+\end{figure}
+
+VPNs können miteinander verbunden werden. Somit wird der gesamte Datenverkehr nicht länger über nur noch einen Server geleitet, sondern es werden hier mehrere Server miteinander verkettet. Man spricht hier von VPN Chaining. Die einzelnen VPN Server sind voneinander unabhängig. Dadurch erzielt man eine vergleichbare Struktur wie Tor  (Kapitel \ref{chap:tor_topology}). Alternativ können VPNs auch dafür genutzt werden, um sich mit Tor statt mit anderen VPNs zu verbinden, wodurch eine zusätzliche Sicherheit gegenüber dem Entry Node erzielt. VPN Chaining dient somit als zusätzliche Sicherheit\footnote{\cite{VPNChains}, Method of Building Dynamic Multi-Hop VPN Chains for Ensuring Security of Terminal Access Systems}.
 
 \subsection{Vorteile}
 \label{chap:vpn_advantages}
 
-\begin{figure}[h!]
-    \centering
-    \includesvg[width=\linewidth]{graph/vpn_chaining.svg}
-    \caption{VPN Chaining}
-    \label{imgs:vpn_chaining}
-\end{figure}
-
-VPNs können miteinander verbunden werden. Somit wird der gesamte Datenverkehr nicht länger über nur noch einen Server geleitet, sondern es werden hier mehrere Server miteinander verkettet. Man spricht hier von VPN Chaining. Die einzelnen VPN Server sind voneinander unabhängig. Dadurch erzielt man eine vergleichbare Struktur wie Tor. Alternativ können VPNs auch dafür genutzt werden, um sich mit Tor statt mit anderen VPNs zu verbinden, wodurch eine zusätzliche Sicherheit gegenüber dem Entry Node erzielt. VPN Chaining dient somit als zusätzliche Sicherheit\footnote{\cite{VPNChains}, Method of Building Dynamic Multi-Hop VPN Chains for Ensuring Security of Terminal Access Systems}.
-zusätzliche dazu haben VPNs noch folgende Vorteile:
+VPNs bieten die folgenden Vorteile:
 
 \begin{itemize}
     \item Geoblocking: Anonyme Kommunikationssysteme ermöglichen es den Nutzern, geografische Beschränkungen zu überwinden, die oft durch Geoblocking-Maßnahmen auferlegt werden. Indem sie ihren Standort verschleiern, können Nutzer auf Inhalte und Dienste zugreifen, die normalerweise auf bestimmte Regionen beschränkt sind. Dies ist besonders nützlich für Menschen, die auf reisespezifische oder länderspezifische Inhalte zugreifen möchten, unabhängig von ihrem Aufenthaltsort.
-    \item Performance: Topologie erlaubt relativ niedrige Latenz als auch hohen Durchsatz, da Datenverkehr nur über einen Server umgeleitet wird. Im Vergleich zur Performance ohne anonyme Kommunikationssysteme wird somit der Datenverkehr nur einmal zusätzlich verschlüsselt.
-    \item VPN ist einfach nachhaltig Monetarisierbar, da VPN Anbieter Nutzern Abo-Modelle oder andere Bezahlmodelle anbieten können. Dies wird dadurch ermöglicht, dass alle Pakete der Nutzer direkt über einen Server des VPN-Anbieters geleitet werden. Der Server kann beim Herstellen einer Verbindung die Anmeldedaten der Nutzer überprüfen und somit feststellen, ob diese Teil für den Service bezahlt haben oder nicht.
+    \item Performance: Topologie erlaubt relativ niedrige Latenz als auch hohen Durchsatz, da Datenverkehr nur über einen Server umgeleitet wird. Im Vergleich zur Performance ohne anonyme Kommunikationssysteme wird somit der Datenverkehr nur einmal zusätzlich verschlüsselt. Dies erlaubt eine hohen Durchsatz als auch niedrige Latenz.
 \end{itemize}
 
 \subsection{Nachteile}
 \label{chap:vpn_disadvantages}
 
-VPNs bieten Aufgrund ihrer Topologie verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei wird in Client-seitige Angriffe und Server-seitige Angriffe unterschieden:
+VPNs bieten Aufgrund ihrer Topologie verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei werden hier primär verschiedene Server-seitige Angriffe unterschieden:
 
 \begin{itemize}
-    \item Client-seitige Angriffe: Bei diesen Angriffen werden gefälschte Pakete in den Netzwerkstapel des VPN-Clients eingeschleust. Aufgrund von Network Address Translation (NAT) und Bogon-Filterung wird der Angreifer als netznah zum Client betrachtet, d. h. sie nutzen dasselbe Netz. NAT-Geräte (Network Address Translation) werden in der Regel an Netzgrenzen eingesetzt, um die Adressen von Paketen zu ändern, wenn sie das NAT passieren. NAT ermöglicht es Netzwerken auf beiden Seiten, ihren eigenen Adressraum zu nutzen, Netzwerkadressen zu erhalten und zwischen Adressfamilien wie IPv6 und IPv4 zu übersetzen. Der Hauptzweck von NAT besteht darin, das Problem der Erschöpfung der IPv4-Adressen zu lösen\footnote{\cite{NetworkAddressTranslation}, Network Address Translation: Extending the Internet Address Space}. Bogons sind Präfixe, welche beim Rounting gefiltert werden. Diese werdenn gefiltert, da viele Spam und DDoS Attacken von Bogon-Adressen kommen\footnote{\cite{BogonFiltering}, Bogons and bogon filtering}. Einige Clients, insbesondere solche mit UNIX-ähnlichen Betriebssystemen, die auf dem "weak host model" basieren, unterscheiden Pakete möglicherweise nicht nach der Schnittstelle und ermöglichen es Angreifern, Pakete so zu fälschen, als kämen sie von einem entfernten Anwendungsserver an die IP-Adresse des VPN-Clients innerhalb des VPN-Netzwerks NAT.
-    \item Server-seitige Angriffe: Bei diesen Angriffen werden Pakete in den VPN-Server eingeschleust, so dass es so aussieht, als kämen sie von einem entfernten Anwendungsserver. Im Gegensatz zu clientseitigen Angriffen können serverseitige Angriffe von jedem Ort im Internet aus gestartet werden. Es wird davon ausgegangen, dass der Angreifer den verschlüsselten VPN-Verkehr einsehen kann, um serverseitige Angriffe auszuführen, was das Zählen verschlüsselter Pakete oder Bytes im Laufe der Zeit voraussetzt. Die Entschärfung serverseitiger Angriffe gilt als schwieriger, da sich der Angreifer zwischen dem VPN-Server und dem Client befinden muss und die gefälschten Pakete in Bezug auf die Header-Informationen nicht von legitimen Paketen unterschieden werden können\footnote{\cite{AttacksOnVPNs}, Blind In/On-Path Attacks and Applications to VPNs}.
+    \item Server-seitige Angriffe: Bei diesen Angriffen werden Pakete in den VPN-Server eingeschleust, so dass es so aussieht, als kämen sie von einem entfernten Anwendungsserver. Es wird davon ausgegangen, dass der Angreifer den verschlüsselten VPN-Verkehr einsehen kann, um serverseitige Angriffe auszuführen, was das Zählen verschlüsselter Pakete oder Bytes im Laufe der Zeit voraussetzt. Die Entschärfung serverseitiger Angriffe gilt als schwieriger, da sich der Angreifer zwischen dem VPN-Server und dem Client befinden muss und die gefälschten Pakete in Bezug auf die Header-Informationen nicht von legitimen Paketen unterschieden werden können\footnote{\cite{AttacksOnVPNs}, Blind In/On-Path Attacks and Applications to VPNs}.
+    \item Mitlesen
+    \item Fake Traffik
 \end{itemize}
