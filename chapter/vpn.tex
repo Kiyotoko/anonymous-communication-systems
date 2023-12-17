@@ -52,10 +52,9 @@ VPNs bieten die folgenden Vorteile:
 \subsection{Nachteile}
 \label{chap:vpn_disadvantages}
 
-VPNs bieten Aufgrund ihrer Topologie verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei werden hier primär verschiedene Server-seitige Angriffe unterschieden:
+VPNs bieten Aufgrund ihrer Topologie verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei werden hier primär verschiedene Server-seitige Angriffe unterschieden. Auch wenn Client-seitige Angriffe möglich sind, werden diese hier nicht betrachtet, da sie nicht durch die Topologie verursacht werden:
 
 \begin{itemize}
-    \item Server-seitige Angriffe: Bei diesen Angriffen werden Pakete in den VPN-Server eingeschleust, so dass es so aussieht, als kämen sie von einem entfernten Anwendungsserver. Es wird davon ausgegangen, dass der Angreifer den verschlüsselten VPN-Verkehr einsehen kann, um serverseitige Angriffe auszuführen, was das Zählen verschlüsselter Pakete oder Bytes im Laufe der Zeit voraussetzt. Die Entschärfung serverseitiger Angriffe gilt als schwieriger, da sich der Angreifer zwischen dem VPN-Server und dem Client befinden muss und die gefälschten Pakete in Bezug auf die Header-Informationen nicht von legitimen Paketen unterschieden werden können\footnote{\cite{AttacksOnVPNs}, Blind In/On-Path Attacks and Applications to VPNs}.
     \item Mitlesen
-    \item Fake Traffik
+    \item Fake Traffik\footnote{\cite{AttacksOnVPNs}, Blind In/On-Path Attacks and Applications to VPNs}
 \end{itemize}

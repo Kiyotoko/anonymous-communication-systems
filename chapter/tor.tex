@@ -7,7 +7,7 @@
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/tor.svg}
-    \caption{Tor Topologie}
+    \caption{Tor verbindet Nutzer durch Circuit Constructios über einen Entry, Middle und Exit Node.}
     \label{imgs:tor}
 \end{figure}
 
@@ -42,7 +42,7 @@ Die mehrschichtige Verschlüsselung und das Multi-Hop-Routing in Tor bieten ein 
 \subsection{Vorteile}
 \label{chap:tor_advantages}
 
-Tor erlaubt durch Circuit Construction hohe Anonymität und Performance. Zwischen jeden der Knoten werden die Datenpakete verschlüsselt.
+Tor erlaubt eine verhältnismäßig hohe Anonymität und Performance. Zwischen jeden der Knoten werden die Datenpakete mit Onion Encryption entschlüsselt. Die Knoten können nicht Ursprung und Ziel einer Nachricht sehen. Gleichzeitig bleibt Latenz niedrig und Durchsatz hoch, da Circuit Construction und ein direktes weiterleiten von Nachrichten die Performance geringfügig beeinträchtigen\footnote{\cite{PerformanceAndSecurityTor}, Performance and Security Improvements for Tor: A Survey}.
 
 Der Erfolg von Angriffen auf das Tor-Netzwerk (Kapitel \ref{chap:tor_disatvantages}) hängt unter anderem auch von der Anzahl an Entry- und Exit-Nodes ab. Mit einer größeren Anzahl an Knoten nimmt die Erfolgchance von Angriffen expotenziel ab. Somit können durch ein hohes Angebot an Knoten die Erfolgchance gegen Null gehen, wodurch Tor sehr sicher trotz verschiedener Angriffe wird.
 
@@ -52,7 +52,7 @@ Der Erfolg von Angriffen auf das Tor-Netzwerk (Kapitel \ref{chap:tor_disatvantag
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/tor_transfer.svg}
-    \caption{Tor Datentransfer}
+    \caption{Bei Tor sind zwei Nutzer aufgrund ihres Datenverkehrs beim Entry und Exit Node voneinander Unterschiedbar.}
     \label{imgs:tor_transfer}
 \end{figure}
 
@@ -69,13 +69,11 @@ Tor bietet auf Grund seiner Topologie Möglichkeiten für verschiedene Angriffe.
 
     Die Wahl des richtigen Fingerabdruckvektors ist entscheidend. Im Zusammenhang mit Tor geht es nicht nur um Dateigrößen, sondern auch darum, die Netzwerkbedingungen des Benutzers widerzuspiegeln. Der Angreifer kann eine Webseite mehrmals aufrufen, Vektoren aufzeichnen und Ähnlichkeitswerte zwischen ihnen berechnen. Der Vektor mit der höchsten Punktzahl wird als Fingerabdruck ausgewählt und repräsentiert sowohl die Eigenschaften der Webseite als auch die Netzwerkbedingungen des Benutzers\footnote{\cite{FingerprintingOnTorAttack}, Fingerprinting attack on the tor anonymity system}.
 
-    \item Bei Timing Attacks wird die Tor-Clients mittels JavaScript-Kombination und Zeit-Analyse deanymisieren. Der Angreifer richtet zwei übernommene Knoten im Tor-Netzwerk ein, wobei einer als Entry-Node und der andere als Exit-Node fungiert. Zusätzlich wird ein Webserver aufgesetzt, um JavaScript-Verbindungen zu protokollieren. Der Angriff nutzt einen übernommenen Tor-Ausgangsknoten, um den gesamten für Tor-Clients bestimmten HTTP-Verkehr zu manipulieren. Hierbei wird ein unsichtbarer JavaScript-Signalgenerator in Webseiten eingefügt.
+    \item Bei Timing Attacks werden die Tor-Clients mittels Zeit-Analyse deanymisieren. Der Angreifer richtet zwei übernommene Knoten im Tor-Netzwerk ein, wobei einer als Entry-Node und der andere als Exit-Node fungiert. Zusätzlich wird ein Webserver aufgesetzt, um die Zeit-Analyse zu protokollieren. Der Angriff nutzt einen übernommenen Tor-Ausgangsknoten, um den gesamten für Tor-Clients bestimmten HTTP-Verkehr zu manipulieren. Hierbei wird ein Signalgenerator in Webseiten eingefügt.
 
-    Beim Surfen senden die Webbrowser der Tor-Clients kontinuierlich ein eineindeutiges Signal an den übernommenen Server, indem das eingefügte JavaScript ausgeführt wird. Dieser Prozess bleibt so lange aktiv, wie der Benutzer den kompromittierten Browser-Tab geöffnet hält. Etwa alle zehn Minuten wechselt der Tor-Client den Circuit, bis dieser eventuell einen übernommen Entry-Node auswählt.
+    Beim Surfen senden die Webbrowser der Tor-Clients kontinuierlich ein eineindeutiges Signal an den übernommenen Server, wobei die Zeit gemessen wird. Dieser Prozess bleibt so lange aktiv, wie der Benutzer den kompromittierten Browser-Tab geöffnet hält. Etwa alle zehn Minuten wechselt der Tor-Client den Circuit, bis dieser eventuell einen übernommen Entry-Node auswählt.
 
     Der Angreifer, der den übernommenen Entry-Nodes kontrolliert, führt eine Verkehrsanalyse durch, indem er die Signale, die durch den Knoten laufen, mit den Signalen vergleicht, die der Server empfängt. Wenn eine Übereinstimmung vorliegt, wird die Identität des Tor-Clients zusammen mit dem entsprechenden Verkehrsverlauf offengelegt, während er den kompromittierten Exit-Node benutzt hat. Der Angriff macht sich die Zeitanalyse zunutze, um die Intervalle zwischen Circuit-Wechseln und Signalübertragungen zu ermitteln.
 
-    Obwohl Entry-Nodes eine Standardfunktion in Tor sind und diesen Angriff teilweise entschärfen, bleibt die Methode dennoch effektiv. Der Angriff kann durch den Einsatz mehrerer übernommener Tor-Entry-Node skaliert werden, was die Zeit zur Kompromittierung der Anonymität eines Clients verringert. Die Verwendung eines Signalgenerators ermöglicht die Entkopplung der Kontrolle über Entry- und Exit-Nodes, was den Prozess weiter vereinfacht.
-
-    JavaScript stellt hierbei exemplarisch nur eine Methode dar, Signale auszusenden und somit Daten zum deanymisieren zu sammeln. Andere Sprachen und Methoden sind ebenfalls möglich\footnote{\cite{BrowserBasedAttacksOnTor}, Browser-Based Attacks on Tor}.
+    Obwohl Entry-Nodes eine Standardfunktion in Tor sind und diesen Angriff teilweise entschärfen, bleibt die Methode dennoch effektiv. Der Angriff kann durch den Einsatz mehrerer übernommener Tor-Entry-Node skaliert werden, was die Zeit zur Kompromittierung der Anonymität eines Clients verringert. Die Verwendung eines Signalgenerators ermöglicht die Entkopplung der Kontrolle über Entry- und Exit-Nodes, was den Prozess weiter vereinfacht\footnote{\cite{BrowserBasedAttacksOnTor}, Browser-Based Attacks on Tor}.
 \end{itemize}

@@ -1,1 +1,7 @@
 \section{Zusammenfassung}
+
+VPN bietet die höchste Performance und die niedriegste Anonymität. Da über nur einen Server der Datenverkehr geleitet und verschlüsselt wird, ist die Performance sehr hoch. Gleichzeitig führt dies zu einer hohen Zentralität, was eine Schwachstelle für Anonymität und mögliche Angriffe bietet. Es verhindert, dass Services den Ursprung von Anfragen sehen, erlaubt jedoch, dass der VPN-Server sowohl Ursprung als auch Ziel sehen kann.
+
+Tor bietet ein ausgewogenes Verhältnis aus Performance und Anonymität. Es versendet Nachrichten über Entry-, Middle- und Exit-Node, und verschlüsselt über Onion Encryption. Es nutzt Padding, um Nachrichten auf eine gleiche Länge zu bringen. Entry-Nodes können nur den Ursprung sehen, Exit-Nodes nur das Ziel einer Nachricht. Nachrichten werden so versendet, wie sie erhalten wurden. Circuit Construction nutzt für etwa 10 Minuten die selbe Route. Diese beiden Faktoren erlauben es, während dessen durch betrachten des Netzwerkes Nutzer aufgrund ihres Datenverkehrs zu Deanonymisieren.
+
+Mixnet bietet die niedriegste Performance und die höchste Anonymität. Es verwendet eine ähnliche Topologie wie Tor. Es nutzt Onion Encryption und Padding. Zusätzlich wird in Stapeln die Reihenfolge der ankommenden und gesendeten Nachrichten geändert und verzögert. Es nutzt keine Circuit Construction, sondern wählt bei jeder Verbindung eine neu zufällige Route.

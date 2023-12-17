@@ -19,7 +19,7 @@ Ein MIX-Netz funktioniert wie folgt:
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/mixnet.svg}
-    \caption{Mixnet Topologie}
+    \caption{Die Nutzer wählen jedes mal zufällig eine neu Route durch das Mixnet zum Service. Dabei hat jeder Knoten die selbe wahrscheinlichkeit von allen Nutzern gewählt zu werden wie jeder andere.}
     \label{imgs:mixnet}
 \end{figure}
 
@@ -28,7 +28,7 @@ Beim Routing von Mixnet wird anders als bei Tor keine Circuits aufgebaut, sonder
 \begin{figure}[h!]
     \centering
     \includesvg{graph/mixnet_stack.svg}
-    \caption{Mixnet ändert in einem Stapel die Permutation}
+    \caption{Mixnet ändert in einem Stapel die Permutation, dh. dass die Reihenfolge der eingehehnden Nachrichten nicht der Reihenfolge der ausgehenden Nachrichten entspricht.}
     \label{imgs:mixnet_stack}
 \end{figure}
 
@@ -41,7 +41,7 @@ Die Bedeutung dieses Prozesses liegt in seiner Fähigkeit, den Kommunikationstei
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/mixnet_transfer.svg}
-    \caption{Mixnet Datentransfer}
+    \caption{Bei Mixnet sind zwei Nutzer nicht voneinander unterscheidbar.}
     \label{imgs:mixnet_transfer}
 \end{figure}
 
