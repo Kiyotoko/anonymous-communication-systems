@@ -8,18 +8,11 @@
 - [ ] Diskussion schreiben
 - [ ] Abstract schreiben
 - [ ] Angreiffermodelle
-- [ ] Risikoprofile
 - [ ] Mixnet 3.1 Grafik Datenfluss kennzeichen
-- [ ] Routing Tor und Mixnet darlegen
-- [ ] Stack Graph Achse und Grafik überarbeiten
 - [ ] Fake Traffik nicht immer
-- [ ] Topologie Entry, Middle und Exit Node bei Tor und Mixnet erklären
-- [ ] Grafik für Tor mit Bandbreite über Zeit darstellen
-- [ ] draw.io nachschauen für Grafiken
-- [ ] VPN Erklären wie es für Privatsphäre genutzt wird.
+- [ ] Grafik für Tor mit Bandbreite über Zeit erstellen mit draw.io
 - [ ] VPN bei Firmen differenzieren, aka Nutzer können hier auch untereinander kommunizieren
 - [ ] Server Seitige Angriffe unterscheiden -> Server kann mitlesen, Fake Traffic zum Client senden
-- [ ] Zusammenfassung Abwägen zwischen Performance und Anonymität
 
 ## 🔒 Done
 
@@ -39,3 +32,10 @@
 - [x] Padding: Einheitliche Länge von 
 - [x] Latenz mehr durch Verzögerung beim senden, als beim Verschlüsseln
 - [x] Client Seitige Angriffe weglassen
+- [x] Stack Graph Achse und Grafik überarbeiten
+- [x] Topologie Entry, Middle und Exit Node bei Tor und Mixnet erklären
+- [x] VPN Erklären wie es für Privatsphäre genutzt wird.
+- [x] Zusammenfassung Abwägen zwischen Performance und Anonymität
+- [x] draw.io nachschauen für Grafiken
+- [x] Risikoprofile
+- [x] Routing Tor und Mixnet darlegen
