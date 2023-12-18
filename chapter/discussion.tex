@@ -3,16 +3,15 @@
 \subsection{Beantwortung der Leitfrage}
 
 Zunächst werden Typen von Interaktionen realer Anwendungsbereiche im Internet definiert, um anschließend VPN, Tor und Mixnet hinsichtlich Performance und Anonymität zunächst zu bewerten und in die zufor definierten Anwendungsbereiche einzuordnen.
+Für die Leitfrage werden die folgenden drei Anwendungsbereiche definiert und betrachtet. Diese sollen alle verschiedenen Ansprüche an Performance und Anonymität grob abdecken. Sie haben nicht den Anspruch, jeden möglichen Anwendungsbereich oder alle Zwischenbereiche abzudecken:
 
-Für die Leitfrage werden die folgenden Bereiche definiert und betrachtet:
+\begin{itemize}
+    \item \textbf{Streaming} ist die gleichzeitige Übertragung und Wiedergabe von Mediendaten. Es verlangt nach einer hohen Performance, da gleichzeitig Daten übertragen und wiedergegeben werden müssen. Da man selbst kaum private Daten dabei sendet, sondern primär erhält, ist keine hohe Anonymität nötig.
+    \item \textbf{Instant Messaging} ist das direkte senden und übertragen von persönlichen Textnachrichten zwischen zwei oder mehr Privatpersonen. Da die Übertragung möglichst unmittelbar ist, sollte eine mittlere Performance gewährleistet sein. Da übertragene Daten jedoch nicht unmittelbar auch wiedergegeben werden und Textnachrichten in der Regel deutlich kleiner als Mediendaten wie Videos oder Bilder sind, wird auch keine so hohe Performance wie beim Streaming gefordert.
+    \item \textbf{Online Banking} ist das Abwickeln von Bankgeschäften im Internet. Dabei muss die Sicherheit der Identität als auch der ausgetauchten Daten maximal sein. Daher wird hier eine sehr hohe Anonymität gefordert. Da relativ wenig, dafür jedoch sehr wichtige, Daten ausgetaucht werden, wird nur wenig Performance benötigt.
+\end{itemize}
 
-Streaming ist die gleichzeitige Übertragung und Wiedergabe von Mediendaten. Es verlangt nach einer hohen Performance, da gleichzeitig Daten übertragen und wiedergegeben werden müssen. Da man selbst kaum private Daten dabei sendet, sondern primär erhält, ist keine hohe Anonymität nötig.
-
-Instant Messaging ist das direkte senden und übertragen von persönlichen Textnachrichten zwischen zwei oder mehr Privatpersonen. Da die Übertragung möglichst unmittelbar ist, sollte eine mittlere Performance gewährleistet sein. Da übertragene Daten jedoch nicht unmittelbar auch wiedergegeben werden und Textnachrichten in der Regel deutlich kleiner als Mediendaten wie Videos oder Bilder sind, wird auch keine so hohe Performance wie beim Streaming gefordert.
-
-Online Banking ist das Abwickeln von Bankgeschäften im Internet. Dabei muss die Sicherheit der Identität als auch der ausgetauchten Daten maximal sein. Daher wird hier eine sehr hohe Anonymität gefordert. Da relativ wenig, dafür jedoch sehr wichtige, Daten ausgetaucht werden, wird nur wenig Performance benötigt.
-
-Die anonymen Kommunikationssysteme werden nun hinsichtlich Anonymität und Performance bewertet.
+Die anonymen Kommunikationssysteme werden relativ zu allen anderen Systemen anhand ihrer Anonymität und Performance bewertet.
 
 VPN bietet die höchste Performance und die niedriegste Anonymität. Da über nur einen Server der Datenverkehr geleitet und verschlüsselt wird, ist die Performance sehr hoch. Gleichzeitig führt dies zu einer hohen Zentralität, was eine Schwachstelle für Anonymität und mögliche Angriffe bietet. Es verhindert, dass Services den Ursprung von Anfragen sehen, erlaubt jedoch, dass der VPN-Server sowohl Ursprung als auch Ziel sehen kann.
 
@@ -27,14 +26,20 @@ Mixnet bietet die niedriegste Performance und die höchste Anonymität. Es verwe
     \label{imgs:systems_discussion}
 \end{figure}
 
-Aus dieser Untersucht zeigt sich, dass hohe Performance und Anonymität sich gegenseitig ausschließen (Abbildung \ref{imgs:systems_discussion}). Dies liegt daran, dass bei den hier untersuchten anonymen Kommunikationssystemen eine höhere Performance niedrigere Anonymität bedeutet, und umgekehrt. Daraus resultiert, dass kein System alleine eine die höchste Performance und Anonymität bietet. Welches System optimal ist, ist ein Abwägen zwischen Performance und Anonymität. Somit haben alle untersuchten Systeme ihre Berechtigung für ihre Anwendungsbeispiele.
+Aus dieser Untersucht zeigt sich, dass hohe Performance und Anonymität für die hier betrachteten Systeme sich gegenseitig ausschließen (Abbildung \ref{imgs:systems_discussion}). Dies liegt daran, dass bei den hier untersuchten anonymen Kommunikationssystemen eine höhere Performance auf kosten der Anonymität kommt, und umgekehrt. Daraus resultiert, dass kein System alleine die höchste Performance und Anonymität bietet. Welches System optimal ist, ist ein Abwägen zwischen Performance und Anonymität. Somit haben alle untersuchten Systeme ihre Berechtigung für ihre Anwendungsbeispiele.
 
 VPNs eignen sich für Streaming und Instant Messaging, da hier eine hohe Performance geboten wird und der Mangel an Anonymität vernachlässigbar ist.
 
 Mixnets eignen sich für Banking und Instant Messaging, da hier eine hohe Anonymität geboten wird und der Mangel an Performanc vernachlässigbar ist.
 
-Tor eignet sich aufgrund seiner Ausgewogenheit aus Performance und Anonymität für alle drei Anwendungsbereiche.
+Tor eignet sich aufgrund seiner Ausgewogenheit aus Performance und Anonymität für alle drei Anwendungsbereiche. Für welchen Bereich man Tor oder einer der alternativen nutzen möchte, kann somit vom individuellen Kontext wie Internetanbieter, Verwendungszweck oder dem Land abhängen.
 
 \subsection{Reflexion}
 
-Arbeitsprozess? Lernprozess?
+An meiner BeLL recherschierte und schrieb ich über ein Jahr verteilt. Dabei fing ich bereits früh an, Inhalte nachzuschlagen und Wissen zu strukturieren. Jedoch begang ich den Fehler, einzelne Teile der Arbeit direkt während der Rechersche bereits komplett auszuschreiben. Dies zog später das Problem mit sich, da durch spätere Erkenntnisse vorherige Teile sich als obsolet, ungenau oder schlichtweg falsch herausstellten. Einige Teile der Arbeit mussten neu strukturiert werden, um den Leser besser durch die Arbeit zu führen. Dieses Problem möchte ich in Zukunft dadurch beheben, dass ich zuerst die gesamte Rechersche abschließe und das Material sammle, dann die Inhalte zusammen fasse und strukturiere, um erst danach die Inhalte auch auszuformulieren.
+
+Durch die BeLL konnte ich tiefgehende Einblicke in die Topologie der anonymen Kommunikationssysteme VPN, Tor und Mixnet gewinnen.
+Ich lernte mit Software wie LaTeX, Inkscape und Graphiz zu arbeiten, um schriftliche Arbeiten als auch Grafiken einfach zu erstellen als auch zu ändern. Hinzu kam, dass ich Einblicke ins wissenschaftlich Arbeiten gewinnen konnte. So lernte ich mit Google Scolar umzugehen und mithilfe von JabRef und BibTeX gut und strukturiert Quellen richtig zu zitieren.
+In meiner Arbeit nutzte ich nur wissenschaftliche Publikationen, Bücher und Konferenzen als Quellen. Diese bringen den Vorteil mit sich, dass diese eine deutlich verlässlichere Quelle darstellen und Probleme als auch Begriffe genau definieren und voneinander abgrenzen. Darüber hinaus konnten diese Quellen deutlich einfacher zitiert werden, da der Verlag meist bereits eine Zitatvorlage für Arbeiten mitgab. Ein großer Nachteil jedoch stellte hier der Preis für den Zugriff zum Material dar, der die Rechersche deutlich komplizierter gestaltete.
+
+Bei der Zeitplanung waren meine Erwartungen falsch gesetzt. Ich hatte den trivialen Fehler begangen, dass mein Fortschritt in meiner Freizeit dem Fortschritt meiner BeLL über das gesamte Jahr wiederspiegeln würde. Jedoch hatte ich dabei Klausuren und Leistungskontrollen nicht in die Planung berücksichtigt, was dafür sorgte, dass großte Teile des Zeitplanes, die im Halbjahr 12.1 hätten erledigt werden sollen, nur unzureichend abgearbeitet wurden, was wiederum mit einem intensiven Schreibprozess im Dezember ausgeglichen werden musste. Dies hätte im Nachhinein besser geplant und früher abgearbeitet werden müssen.

@@ -1,9 +1,0 @@
-digraph  {
-	rankdir=LR
-	
-    {I1 I2 I3 I4 I5} -> Stack -> {O3 O5 O2 O4 O1}
-
-    rank=same I1 I2 I3 I4 I5
-    rank=same O3 O5 O2 O4 O1
-    Stack[shape=box height=3]
-}

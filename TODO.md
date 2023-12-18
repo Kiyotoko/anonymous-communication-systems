@@ -2,17 +2,12 @@
 
 ## 🔓 Open
 
-- [ ] Vorteile Tor besser belegen und erklären
 - [ ] Nachteile VPN besser erklären
-- [ ] Zusammenfassung schreiben
-- [ ] Diskussion schreiben
-- [ ] Abstract schreiben
+- [ ] Server Seitige Angriffe unterscheiden -> Server kann mitlesen, Fake Traffic zum Client senden
 - [ ] Angreiffermodelle
 - [ ] Mixnet 3.1 Grafik Datenfluss kennzeichen
 - [ ] Fake Traffik nicht immer
-- [ ] Grafik für Tor mit Bandbreite über Zeit erstellen mit draw.io
 - [ ] VPN bei Firmen differenzieren, aka Nutzer können hier auch untereinander kommunizieren
-- [ ] Server Seitige Angriffe unterscheiden -> Server kann mitlesen, Fake Traffic zum Client senden
 
 ## 🔒 Done
 
@@ -39,3 +34,8 @@
 - [x] draw.io nachschauen für Grafiken
 - [x] Risikoprofile
 - [x] Routing Tor und Mixnet darlegen
+- [x] Zusammenfassung schreiben
+- [x] Diskussion schreiben
+- [x] Abstract schreiben
+- [x] Vorteile Tor besser belegen und erklären
+- [x] Grafik für Tor mit Bandbreite über Zeit erstellen mit draw.io
