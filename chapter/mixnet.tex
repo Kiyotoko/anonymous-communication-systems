@@ -28,11 +28,11 @@ Beim Routing von Mixnet wird anders als bei Tor keine Circuits aufgebaut, sonder
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/mixnet_stack.svg}
-    \caption{Mixnet ändert in einem Stapel die Permutation, dh. dass die Reihenfolge der eingehehnden Nachrichten nicht der Reihenfolge der ausgehenden Nachrichten entspricht.}
+    \caption{Mixnet ändert in einem Stapel die Permutation, dh. dass die Reihenfolge der eingehenden Nachrichten nicht der Reihenfolge der ausgehenden Nachrichten entspricht.}
     \label{imgs:mixnet_stack}
 \end{figure}
 
-Bei Mixnet-Knoten wird ein Stack verwendet (Abbildung \ref{imgs:mixnet_stack}). Dieser funktioniert, indem die MIX die Nachrichten sammeln. Nachdem sie eine gewisse Anzahl an Nachrichten erhalten haben, werden alle erhaltenen Nachrichten zufällig neu gemischt (Mixing). Die Nachrichten werden dann in der neu gemischten Reihenfolge wieder versendet. Ziel dabei ist, dass die Reihenfolge der gesendeten Nachrichten nicht der Reihenfolge der erhaltenen Nachrichten entspricht, und man somit durch das passive Betrachten der Kommunikation bei einem MIX man keine Rückschlüsse auf den Ursprung der versendeten Nachrichten ziehen kann. Jedoch entsteht dadurch, dass der MIX zunächst die Nachrichten sammeln muss, eine Verzögerung.
+Bei Mixnet-Knoten wird ein Stack verwendet (Abbildung \ref{imgs:mixnet_stack}). Dieser funktioniert, indem die MIX die Nachrichten sammeln. Nachdem sie eine gewisse Anzahl an Nachrichten erhalten haben, werden alle erhaltenen Nachrichten zufällig neu gemischt (Mixing). Die Nachrichten werden dann in der neu gemischten Reihenfolge wieder versendet. Ziel dabei ist, dass die Reihenfolge der gesendeten Nachrichten nicht der Reihenfolge der erhaltenen Nachrichten entspricht, und somit durch das passive Betrachten der Kommunikation bei einem MIX keine Rückschlüsse auf den Ursprung der versendeten Nachrichten ziehen kann. Jedoch entsteht dadurch, dass der MIX zunächst die Nachrichten sammeln muss, eine Verzögerung.
 
 Ein Knoten kann sehen, von welchem Server ein Paket gesendet wurde, und an welchem Server es weitergeleitet wird. Ein Knoten jedoch kann weder den Zeitpunkt noch die Größe des ursprüngliche Paketes bestimmen, da Padding auf die Nachrichten angewendet wird . Auch kann ein Knoten nicht feststellen, ob ein Nutzer überhaupt kommuniziert.
 

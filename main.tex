@@ -8,6 +8,7 @@
 \usepackage{lipsum}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
+\usepackage{caption}
 
 \bibliographystyle{apalike}
 \counterwithin{figure}{section}
@@ -18,19 +19,20 @@
     linkcolor=black,
     urlcolor=black
 }
+\captionsetup[figure]{font=small,labelfont=small}
 
 % \title{Content}
 \begin{document}
-    \parindent0.1cm
+    \parindent0.4cm
 
-    % Titelblatt
+    % Titelblatt und Abstrakt
     \include{chapter/cover.tex}
+    \include{chapter/abstract}
 
     % Inhaltsverzeichnis
     \tableofcontents
 
     % Inhalt
-    \include{chapter/abstract}
     \include{chapter/introduction.tex}
     \include{chapter/overlay_network.tex}
     \include{chapter/vpn.tex}
@@ -41,6 +43,7 @@
     \include{chapter/summary.tex}
 
     % Anhang
+    \appendix
     \include{chapter/abbreviations}
     \include{chapter/appendix.tex}
     \bibliography{references.bib}

@@ -1,15 +1,15 @@
 \section{Overlay Networks}
 \label{chap:overlay_networks}
 
-Ein Overlay Network (Abbildung \ref{imgs:overlay_network}) besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Dies bedeutet, dass sie über eine bereits bestehende Topologie (Underlay) eine neue Virtuelle Topologie drüberspannen (Overlay). Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\footnote{\cite{OverlayNetwork}, Overlay Network}.
+Ein Overlay Network (Abbildung \ref{imgs:overlay_network}) besteht aus Servern, die über das Internet verteilt sind und als zusätzliche Schicht fungieren, die über das bereits bestehende Netzwerk gezogen wird, die einer oder mehreren Anwendungen die Infrastruktur zur Verfügung stellt. Dies bedeutet, dass sie über die bereits bestehenden physischen Netzwerkverbindungen (Underlay) eine neue Virtuelle Topologie drüberspannen (Overlay), um mehr Funktionen wie neue Protokolle oder vereinfachtes Routing zu bieten. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\footnote{\cite{OverlayNetwork}, Overlay Network}.
 
 \begin{figure}[h!]
     \centering
     \includesvg{graph/overlay_network.svg}
-    \caption{Overlay Network erlaubt neue Funktionen über dem Underlay Network}
+    \caption{Overlay Network erlaubt neue Funktionen über dem Underlay Network.}
     \label{imgs:overlay_network}
 \end{figure}
 
-Overlay-Netzwerke ermöglichen eine strukturierte virtuelle Topologie, die über der grundlegenden Transportprotokollebene liegt. Dadurch können sie eine Reihe fortgeschrittener Funktionen anbieten, die über das hinausgehen, was das grundlegende Internet mit seiner physischen Topologie bietet. Sie können Mobilität, individuelles Routing, Quality of Service (QoS), neuartige Adressierung, verbesserte Sicherheit, Multicast und die Verteilung von Inhalten ermöglichen. So können Overlays beispielsweise Anwendungen unterstützen, die Anonymität erfordern, indem sie den Datenverkehr über zwischengeschaltete Server umleiten und so die wahre Quelle und das wahre Ziel der Daten verschleiern.
+Overlay-Netzwerke ermöglichen eine strukturierte virtuelle Topologie, die über der grundlegenden Transportprotokollebene liegt. Dadurch können sie eine Reihe fortgeschrittener Funktionen anbieten, die über das hinausgehen, was das grundlegende Internet mit seiner physischen Topologie bietet. Sie können Mobilität, individuelles Routing, Quality of Service (QoS), neuartige Adressierung, verbesserte Sicherheit, Multicast und die Verteilung von Inhalten ermöglichen.
 
 Diese Overlay Networks stellen auch die traditionellen End-to-End-Konstruktionsprinzipien wie P2P in Frage, die in der Vergangenheit die Platzierung von Funktionen und Diensten innerhalb der Internet-Architektur bestimmt haben\footnote{\cite{AlternativeToP2P}, Overlay Networks: A scalable alternative to P2P}. Indem sie neu definieren, wo und wie diese Funktionalitäten platziert werden, tragen Overlays zur Weiterentwicklung der Internetstruktur bei und ermöglichen die Anpassung an die sich ändernden Anforderungen von Benutzern und Anwendungen\footnote{\cite{FutureOfTheInternet}, Overlay Networks and the Future of the Internet}.

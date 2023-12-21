@@ -1,7 +1,7 @@
-graph {
+digraph {
 	rankdir=TD
 
-    {O1} -- {O4}[color=red]
+    {O1} -> {O4}[color=red]
 
     subgraph {
 		label="Overlay"
@@ -12,10 +12,12 @@ graph {
         {rank=same O1 O4}
 	}
 
-    {U1} -- U2 -- U3 -- {U4}[color=red]
-    {U1} -- U6 -- U5 -- {U4}
-    {U2} -- {U6}[style=invis]
-    {U3} -- {U5}[style=invis]
+    U1 -> U2 -> U3 -> U4[color=red]
+    U4 -> U5
+    U5 -> U6[constraint=false]
+    U6 -> U1
+    {U2} -> {U6}[style=invis]
+    {U3} -> {U5}[style=invis]
 
     subgraph {
 		label="Underlay"
@@ -28,7 +30,7 @@ graph {
         {rank=same U5 U6}
 	}
 
-    {U1} -- {O1}[style=dotted]
-    {U4} -- {O4}[style=dotted]
-    {O1} -- {U2 U3} -- {O4}[style=invis]
+    {U1} -> {O1}[style=dotted, shape=none]
+    {U4} -> {O4}[style=dotted, shape=none]
+    {O1} -> {U2 U3} -> {O4}[style=invis]
 }
