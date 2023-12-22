@@ -5,11 +5,10 @@
 \label{chap:mixnet_topology}
 
 Ein Mixnet ist ein System, das aus mehreren Servern besteht, die als MIXe oder MIX-Knoten bezeichnet werden.  Der Hauptzweck eines MIX-Netzes besteht darin, eine Möglichkeit zu bieten, Nachrichten anonym über ein Netzwerk zu versenden.
-
 Ein MIX-Netz funktioniert wie folgt:
 
 \begin{itemize}
-    \item Verschlüsselung von Nachrichten: Die Nutzer wählen eine zufällige Route durch das MIX-Netz. Auf die Nachricht wird Padding angewendet (Kapitel \ref{chap:tor_topology}), d. h. die Nachricht wird so aufgefüllt, dass sie gleich lang wie andere ist. Mithilfe von Onion Encryption wird die Nachricht für die zufällig gewählte Route verschlüsselt und zum ersten MIX-Knoten versendet.
+    \item Verschlüsselung von Nachrichten: Die Nutzer wählen eine zufällige Route durch das MIX-Netz. Auf die Nachricht wird Padding angewendet (Kapitel \ref{chap:tor_topology}), d. h. die Nachricht wird so aufgefüllt, dass sie gleich lang wie andere ist. Mithilfe von Onion Encryption wird die Nachricht für die zufällig gewählte Route verschlüsselt und zum ersten MIX-Knoten versendet\footnote{\cite{OnionEncryptionMixnet}, Mixnets: Implementation and performance evaluation of decryption and re-encryption types}.
     \item Verarbeitung der Nachricht: Nach dem Empfang der verschlüsselten Nachrichten entschlüsselt jeder MIX die empfangenen Nachrichten mit seinem privaten Schlüssel. Dies ermöglicht es dem MIX, die Nachrichten zu verarbeiten.
     \item Stapelung und Permutation: Die entschlüsselten Nachrichten werden dann im Stapel bzw. Stack gruppiert. Die Reihenfolge dieser Nachrichten wird permutiert, d. h. sie werden in einer zufälligen Reihenfolge gemischt. Diese Vermischung der Nachrichtenreihenfolge trägt dazu bei, die Verbindung zwischen dem Absender und dem Empfänger zu unterbrechen.
     \item Weiterleitung: Nachdem die Identität des Absenders entfernt und die Reihenfolge der Nachrichten vertauscht wurde, leitet der MIX die verarbeiteten Nachrichten an den nächsten MIX in der Reihe weiter\footnote{\cite{ComposableMixNet}, A Universally Composable Mix-Net}.
@@ -18,11 +17,11 @@ Ein MIX-Netz funktioniert wie folgt:
 \begin{figure}[h!]
     \centering
     \includesvg[width=\linewidth]{graph/mixnet.svg}
-    \caption{Die Nutzer wählen jedes mal zufällig eine neu Route durch das Mixnet zum Service. Dabei hat jeder Knoten die selbe wahrscheinlichkeit von allen Nutzern gewählt zu werden wie jeder andere.}
+    \caption{Die Nutzer wählen jedes mal zufällig eine neue Route durch das Mixnet zum Service. Dabei hat jeder Knoten die selbe Wahrscheinlichkeit von allen Nutzern gewählt zu werden wie jeder andere.}
     \label{imgs:mixnet}
 \end{figure}
 
-Beim Routing von Mixnet wird anders als bei Tor keine Circuits aufgebaut, sondern es wird jedes mal eine neue Route zufällig gewählt. Dabei hat jeder Knoten innerhalb der selben Ebene die gleiche Wahrscheinlichkeit bei allen Nutzern ausgewählt zu werden wie jeder Andere (Abbildung \ref{imgs:mixnet}). Wie auch bei Tor unterteilt auch Mixnet die Knoten in Entry-, Middle- und Exit-Nodes.
+Beim Routing von Mixnet wird anders als bei Tor keine Circuits aufgebaut, sondern es wird jedes mal eine neue Route zufällig gewählt. Dabei hat jeder Knoten innerhalb der selben Ebene die gleiche Wahrscheinlichkeit, von allen Nutzern ausgewählt zu werden wie jeder andere (Abbildung \ref{imgs:mixnet})\footnote{\cite{MixnetRouteAlgorithm}, A mix route algorithm for mix-net in wireless mobile ad hoc networks}. Wie auch bei Tor unterteilt auch Mixnet die Knoten in Entry-, Middle- und Exit-Nodes.
 
 \begin{figure}[h!]
     \centering
@@ -31,7 +30,7 @@ Beim Routing von Mixnet wird anders als bei Tor keine Circuits aufgebaut, sonder
     \label{imgs:mixnet_stack}
 \end{figure}
 
-Bei Mixnet-Knoten wird ein Stack verwendet (Abbildung \ref{imgs:mixnet_stack}). Dieser funktioniert, indem die MIX die Nachrichten sammeln. Nachdem sie eine gewisse Anzahl an Nachrichten erhalten haben, werden alle erhaltenen Nachrichten zufällig neu gemischt (Mixing). Die Nachrichten werden dann in der neu gemischten Reihenfolge wieder versendet. Ziel dabei ist, dass die Reihenfolge der gesendeten Nachrichten nicht der Reihenfolge der erhaltenen Nachrichten entspricht. Somit ist es nicht Möglich, durch das passive Betrachten der Kommunikation bei einem MIX Rückschlüsse auf den Ursprung der versendeten Nachrichten ziehen. Jedoch entsteht dadurch, dass der MIX zunächst die Nachrichten sammeln muss, eine Verzögerung.
+Bei Mixnet-Knoten wird ein Stack verwendet (Abbildung \ref{imgs:mixnet_stack}). Dieser funktioniert, indem die MIX die Nachrichten sammeln. Nachdem sie eine gewisse Anzahl an Nachrichten erhalten haben, werden alle erhaltenen Nachrichten zufällig neu gemischt (Mixing). Die Nachrichten werden dann in der neu gemischten Reihenfolge wieder versendet. Ziel dabei ist, dass die Reihenfolge der gesendeten Nachrichten nicht der Reihenfolge der erhaltenen Nachrichten entspricht. Somit ist es nicht möglich, durch das passive Betrachten der Kommunikation bei einem MIX Rückschlüsse auf den Ursprung der versendeten Nachrichten zu ziehen. Jedoch entsteht dadurch, dass der MIX zunächst die Nachrichten sammeln muss, eine Verzögerung\footnote{\cite{MixnetStack}, A Privacy-Preserving Routing Protocol Using Mix Networks in Opportunistic Networks}.
 
 Ein Knoten kann erkennen, von welchem Server ein Paket gesendet wurde und an welchem Server es weitergeleitet wird. Dieser kann jedoch weder den Zeitpunkt noch die Größe des ursprüngliche Paketes bestimmen, da Padding auf die Nachrichten angewendet wird.
 
@@ -57,21 +56,22 @@ MIX-Netze haben sich über das ursprüngliche Konzept hinaus weiterentwickelt un
     \item Hybride MIXe: In dieser Richtung werden verschiedene Techniken kombiniert, um eine verbesserte Anonymität und Sicherheit zu erreichen\footnote{\cite{MIXNetReliability}, A Reputation System to Increase MIX-Net Reliability}.
 \end{itemize}.
 
-Einige Mixnets setzten zusätzlich \textit{Cover Traffic} ein. Cover Traffic sind künstlich generierte Nachrichten, die zusätzlich zu echten Nachrichten der Nutzer versendet wird. Ein Knoten im Netzwerk kann dadurch nicht feststellen, ob ein Nutzer überhaupt kommuniziert. Hinzu kommt, das Cover Traffic die Latenz senken kann\footnote{\cite{MixnetOptimizationMethods}, Mixnet optimization methods}.
+Einige Mixnets setzten zusätzlich \textit{Cover Traffic} ein. Cover Traffic sind künstlich generierte Nachrichten, die zusätzlich zu echten Nachrichten der Nutzer versendet werden. Ein Knoten im Netzwerk kann dadurch nicht feststellen, ob ein Nutzer überhaupt kommuniziert. Hinzu kommt, das Cover Traffic die Latenz senken kann\footnote{\cite{MixnetOptimizationMethods}, Mixnet optimization methods}.
 
 \subsection{Vorteile}
 \label{chap:mixnet_advantages}
 
-\begin{itemize}
-    \item Timig Attacks sind bei Mixnet im Gegensatz zu anderen Systemen nicht möglich, da die Reihenfolge der Nachrichten, indem diese ankommen, zufällig verändert und verzögert wird (Kapitel \ref{chap:tor_disatvantages}). Dadurch entspricht die Reihenfolge der abgesendeten Nachrichten nicht der Reihenfolge der Nachrichten, die angekommen sind, wodurch für Dritten unbekannt ist, welche angekommene Nachricht wohin versendet wurde. Da alle Knoten dies Anwenden, können äußere als auch einzelne Knoten selbst nicht die Nachricht nachverfolgen\footnote{\cite{MixNetworksSecureApplications}, A Survey on Mix Networks and Their Secure Applications}.
-    \item Es kann bei Systemen die zusätzlich \textit{Cofer Traffic} senden, nicht festgestellt werden, ob überhaupt kommuniziert wird. Cover Traffic wird von Nutzern zusätzlich zu echten Nachrichten im Netzwerk gesendet. Wenn eine Nachricht von einem Nutzer ausgesendet wird, decken diese gefälschten Nachrichten den echten Datenverkehr. Der Cover Traffic ist von außen mit echten Nachrichten identisch. Diese Nachrichten werden ausgesendet, damit Dritte nicht erkennen können, ob der Nutzer überhaupt kommuniziert\footnote{\cite{LoopixAnonymitySystem}, The Loopix Anonymity System}.
-    \item Mixnets können abhängig von der Implementierung gut monetarisierbar sein. Die Organisation Nym stellt dafür ein System vor, wo auf dem Mixnet eine Blockchain für Cryptowährungen gebaut sind. Dabei werden Gewinne aus der Blockchain mit den Server Hostern geteilt. Dies ermöglicht es, finanziell die Kosten der Hoster zu decken und somit eine langfristig nachhaltige Finanzierung zu gewährleisten\footnote{\cite{RewardSharingForMixnets}, Reward Sharing for Mixnets}.
-\end{itemize}
+Timig Attacks sind bei Mixnet im Gegensatz zu anderen Systemen nicht möglich, da die Reihenfolge der Nachrichten, indem diese ankommen, zufällig verändert und verzögert werden (Kapitel \ref{chap:tor_disatvantages}). Dadurch entspricht die Reihenfolge der abgesendeten Nachrichten nicht der Reihenfolge der Nachrichten, die angekommen sind, wodurch für Dritten unbekannt ist, welche angekommene Nachricht wohin versendet wurde. Da alle Knoten dies Anwenden, können Dritte als auch einzelne Knoten selbst nicht die Nachricht nachverfolgen\footnote{\cite{MixNetworksSecureApplications}, A Survey on Mix Networks and Their Secure Applications}.
+
+Es kann bei Systemen die zusätzlich \textit{Cofer Traffic} senden, nicht festgestellt werden, ob überhaupt kommuniziert wird. Cover Traffic wird von Nutzern zusätzlich zu echten Nachrichten im Netzwerk gesendet. Wenn eine Nachricht von einem Nutzer ausgesendet wird, decken diese generierten Nachrichten den echten Datenverkehr. Der Cover Traffic ist von außen mit echten Nachrichten identisch. Diese Nachrichten werden ausgesendet, damit Dritte nicht erkennen können, ob der Nutzer überhaupt kommuniziert\footnote{\cite{LoopixAnonymitySystem}, The Loopix Anonymity System}.
+
+Darüber hinaus können Mixnets abhängig von der Implementierung gut monetarisierbar sein. Die Organisation Nym stellt dafür ein System vor, wo auf dem Mixnet eine Blockchain für Cryptowährungen gebaut sind. Dabei werden Gewinne aus der Blockchain mit den Server Hostern geteilt. Dies ermöglicht es, finanziell die Kosten der Hoster zu decken und somit eine langfristig nachhaltige Finanzierung zu gewährleisten\footnote{\cite{RewardSharingForMixnets}, Reward Sharing for Mixnets}.
 
 \subsection{Nachteile}
 \label{chap:mixnet_disadvantages}
 
-\begin{itemize}
-    \item Latenz ist bei Mixnets deutlich höher. Dies hat zwei Gründe. Primär liegt es daran, dass bei Stop-and-Go-MIX-Netze die Verzögerung beim Versenden der Nachricht die Latenz deutlich erhöht, da immer im Stack gewartet wird, bis genug Nachrichten angekommen sind, um diese dann anschließend zu Mixen. Hinzu kommt, dass zwischen jedem Knoten die Daten verschlüsselt werden müssen. Umso häufiger eine Nachricht verschlüsselt wird, umso größer ist auch die Verzögerung, welche entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}.
-    \item Der reale Durchsatz ist minimal geringer als vergleichbare Systeme. Als realer Durchsatz wird der Durchsatz an echten Nachrichten bezeichnet, Cover Traffic zählt somit nicht darunter. Jedoch kann Corver Traffic den Nachteil der Latenz minimieren, da dadurch mehr Nachrichten versendet werden, wodurch der Stack kürzer auf andere Nachrichten warten muss.
-\end{itemize}
+Mixnet bietet einen hohen Schutz gegen verschiedene Angriffe und somit eine hohe Anonymität. Dabei wird jedoch die Performance beeinträchtig.
+
+Die Latenz ist bei Mixnets deutlich höher. Dies hat zwei Gründe. Primär liegt es daran, dass bei Stop-and-Go-MIX-Netze die Verzögerung beim Versenden der Nachricht die Latenz deutlich erhöht, da immer im Stack gewartet wird, bis genug Nachrichten angekommen sind, um diese dann anschließend zu mixen. Hinzu kommt, dass zwischen jedem Knoten die Daten verschlüsselt werden müssen. Umso häufiger eine Nachricht verschlüsselt wird, umso größer ist auch die Verzögerung, welche entsteht\footnote{\cite{EffectivenessOfMixnets}, The effectiveness of mixnets - an empirical study}.
+
+Der reale Durchsatz ist minimal geringer als vergleichbare Systeme. Als realer Durchsatz wird der Durchsatz an echten Nachrichten bezeichnet, Cover Traffic zählt somit nicht darunter. Jedoch kann Corver Traffic den Nachteil der Latenz minimieren, da hierdurch mehr Nachrichten versendet werden, was zur Folge hat, dass der Stack kürzer auf andere Nachrichten warten muss.

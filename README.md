@@ -9,6 +9,8 @@
 
 <h2 align=center>Abstrakt</h2>
 
+Die Anonymität im Internet gewinnt zunehmend an Bedeutung. Zum Schutz der Identität werden anonyme Kommunikationssysteme wie Mixnets, Tor und VPNs eingesetzt. Diese haben jedoch unterschiedliche Vorteile als auch Schwachstellen. Die Arbeit untersucht diese Systeme qualitativ anhand von Performance und gebotener Anonymität und vergleicht diese anschließend miteinander. Ziel dabei ist es, für verschiedene Anwendungsbereiche die optimalen anonymen Kommunikationssysteme zu finden. Hierbei zeigte sich, dass kein System sowohl die höchste Performance als auch Anonymität bietet, sonderen dazwischen abgewogen werden muss. VPN hat die höchste Performance, jedoch die geringste Anonymität. Mixnet hat die höchste gebotene Anonymität, jedoch die niedrigste Performance. Tor hat ein ausgewogenes Verhältnis aus Performance und Anonymität.
+
 <h2 align=center>Schlüsselwörter</h2>
 
 <p align=center>

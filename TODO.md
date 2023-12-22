@@ -2,12 +2,6 @@
 
 ## 🔓 Open
 
-- [ ] Angreiffermodelle
-- [ ] Mixnet 3.1 Grafik Datenfluss kennzeichen
-- [ ] Fake Traffik nicht immer
-- [ ] VPN bei Firmen differenzieren, aka Nutzer können hier auch untereinander kommunizieren
-- [ ] Multi Hop Rounting bei Tor erklären
-
 ## 🔒 Done
 
 - [x] Timing Attacks allgemeiner halten -> JavaScript heraus packen
@@ -40,3 +34,4 @@
 - [x] Grafik für Tor mit Bandbreite über Zeit erstellen mit draw.io
 - [x] Nachteile VPN besser erklären -> siehe Single Point of Failure (SPOF)
 - [x] Server Seitige Angriffe unterscheiden -> Server kann mitlesen, Fake Traffic zum Client senden
+- [x] Fake Traffik nicht immer
