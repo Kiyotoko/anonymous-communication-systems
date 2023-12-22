@@ -4,14 +4,14 @@
 
 \subsubsection{Anonymität}
 
-Mixnet bietet die höchste Stufe der Anonymität. Dies resultiert aus dem Stack, dem Routing und der Onion Encryption. Primär sorgt hierbei der Stack durch das Mixen und Verzögern von Nachrichten für einen höheren Schutz gegenüber Tor und Mixnet. Mit Padding und dem optionalen Nutzen von Fake Traffik wird ermöglicht, Daten verschiedener Nutzer aus der perspektive Dritter gleich aussehen zulassen, sowie zu verhindern, dass Dritte sehen können, ob überhaupt kommuniziert wird.
+Mixnet bietet die höchste Stufe der Anonymität. Dies resultiert aus dem Mixing, dem Routing und der Onion Encryption. Primär sorgt hierbei der Stack durch das Mixen und Verzögern von Nachrichten für einen höheren Schutz gegenüber Tor und Mixnet. Mit Padding und dem optionalen Nutzen von Fake Traffic wird ermöglicht, Daten verschiedener Nutzer aus der perspektive Dritter gleich aussehen zulassen, sowie zu verhindern, dass Dritte sehen können, ob überhaupt kommuniziert wird.
 Im Vergleich dazu bietet Tor eine mittlere Anonymität. Es nutzt ebenfalls Onion Encrption. Hinzu kommt das verwenden von Circuit Constructions. Obwohl verschiedene Angriffsmöglichkeiten existieren, erfordert das Durchbrechen der Anonymität den Übergriff auf mehrere Knotenpunkte, mindestens jedoch einem Entry und Exit Node.
 Hingegen weist VPN eine geringere Anonymität auf, da sämtliche Daten zentral über einen Server umgeleitet werden. Dieser zentrale Punkt der Datenumleitung erleichtert potenziell die Identifikation von Nutzern im Vergleich zu fortschrittlicheren Anonymisierungstechnologien wie Mixnet und Tor.
 
 \subsubsection{Performance}
 
 VPN ist sehr performant, da Daten nur zweimal zusätzlich verschlüsselt werden (1 mal von Nutzer zu Anbieter, und umgekehrt).
-Tor hat eine akzeptaple Performance. Auf der einen Seite verschlüsselt es zwischen allen Knoten das Datenpaket, wodurch es eine höhere Latenz als VPNs hat. Auf der anderen Seite verwendet es keinen Stack, wodurch Narichten verzögert oder gemixt würden, und es nutzt Circuit Constructions, wodurch der Datenverkehr einmal über eine Route festgelegt wird, und danach für etwa 10 Minuten nicht mehr geändert werden muss.
+Tor hat eine akzeptaple Performance. Auf der einen Seite verschlüsselt es zwischen allen Knoten das Datenpaket, wodurch es eine höhere Latenz als VPNs hat. Auf der anderen Seite muss nicht darauf gewartet werden, genug Datenpakete für Mixing zu erhalten, wodurch Narichten auch nicht verzögert werden, und es nutzt Circuit Constructions, wodurch der Datenverkehr einmal über eine Route festgelegt wird, und danach für etwa 10 Minuten nicht mehr geändert werden muss.
 Mixnet ist sehr langsam aufgrund von mehrfachen Verschlüsselungsverfahren bei den Sendern. Es verzögert Nachrichten, mixt diese und wählt verschiede Routen, wodurch es eine hohe Latenz hat, was primär zur niedrigen Performance beiträgt.
 
 \subsection{Fehlerbetrachtung}

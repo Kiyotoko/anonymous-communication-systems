@@ -10,6 +10,13 @@
 \usepackage{hyperref}
 \usepackage{caption}
 
+\renewcommand{\listoffigures}{
+    \begingroup
+    \tocsection
+    \tocfile{\listfigurename}{lof}
+    \endgroup
+}
+
 \bibliographystyle{apalike}
 \counterwithin{figure}{section}
 \hypersetup{
@@ -20,6 +27,8 @@
     urlcolor=black
 }
 \captionsetup[figure]{font=small,labelfont=small}
+\emergencystretch=1cm
+\pagenumbering{arabic}
 
 % \title{Content}
 \begin{document}
@@ -45,6 +54,7 @@
     % Anhang
     \appendix
     \include{chapter/abbreviations}
+    \listoffigures
     \include{chapter/appendix.tex}
     \bibliography{references.bib}
     \include{chapter/independence.tex}
