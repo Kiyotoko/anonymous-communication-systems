@@ -1,7 +1,7 @@
 <h1 align=center>Anonymous Communication Systems</h1>
 
 <p align=center>
-    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Kiyotoko/anonymous-communication-systems/total">
+    <img alt="GitHub all releases" src="https://img.shields.io/github/v/tag/Kiyotoko/anonymous-communication-systems">
     <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/Kiyotoko/anonymous-communication-systems/master">
     <img alt="Program" src="https://img.shields.io/badge/written_in-LaTeX-blue">
     <img alt="Language" src="https://img.shields.io/badge/language-Deutsch-crimson">

@@ -1,0 +1,55 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,left=2.5cm,right=3.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage[nottoc,notlof,numbib]{tocbibind}
+\usepackage[ngerman]{babel}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{hyperref}
+\usepackage{caption}
+
+
+\bibliographystyle{ieeetr}
+\counterwithin{figure}{section}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\captionsetup[figure]{font=small,labelfont=small}
+\emergencystretch=1cm
+\pagenumbering{arabic}
+
+\title{Vergleich von anonymen Kommunikationssystemen\\ \Large Mixnet, Tor und VPN}
+\author{Karl Zschiebsch}
+
+\begin{document}
+    \parindent0.4cm
+
+    % Titelblatt und Abstrakt
+    \maketitle
+    \input{chapter/abstract}
+
+    % Verzeichnis
+    \tableofcontents
+    \listoffigures
+
+    % Inhalt
+    \clearpage
+    \input{chapter/introduction.tex}
+    \input{chapter/overlay_network.tex}
+    \input{chapter/vpn.tex}
+    \input{chapter/tor.tex}
+    \input{chapter/mixnet.tex}
+    \input{chapter/evaluation.tex}
+    \input{chapter/discussion.tex}
+    \input{chapter/summary.tex}
+    \clearpage
+
+    % Literatur
+    \bibliography{references.bib}
+\end{document}
