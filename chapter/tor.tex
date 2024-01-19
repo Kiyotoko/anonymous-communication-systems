@@ -17,37 +17,30 @@ Wie auch bei VPNs können bei Tor die Services nicht die Nutzer sehen. Die einze
 
 \begin{description}
     \item[Entry-Nodes] sind die Server, mit denen sich ein Nutzer mit dem Tor-Netzwerk verbindet. Sein Datenverkehr wird über dem Entry-Node geleitet, der der erste Kontaktpunkt mit dem Tor-Netzwerk ist. Dieser Node ist dafür verantwortlich, die äußerste Schicht der Verschlüsselung zu entfernen, wie das Schälen einer Zwiebel, um das nächste Ziel im \textit{Circuit} zu enthüllen. Der Entry-Node kennt die IP-Adresse des Benutzers und weiß, woher der Verkehr kommt. Aufgrund der Verschlüsselungsschichten kennt der Entry-Node jedoch nicht das endgültige Ziel der Daten.
-    \item[Middle-Nodes] verbinden Entry-Nodes mit Exit-Nodes. Sie entfernen beim weiterleiten eine weitere Schicht. Der Middle-Node wird verwendet, damit Entry- und Exit-Nodes nicht voneinander wissen, um so verschiedene Angriffe zum Nachverfolgen von Traffic zu verhindern.
+    \item[Middle-Nodes] verbinden Entry-Nodes mit Exit-Nodes. Sie entfernen beim Weiterleiten eine weitere Schicht. Der Middle-Node wird verwendet, damit Entry- und Exit-Nodes nicht voneinander wissen, um so verschiedene Angriffe zum Nachverfolgen von Traffic zu verhindern.
     \item[Exit-Nodes] sind  die letzte Server in der Schaltung. Der Exit-Node ist dafür verantwortlich, die Anfrage des Benutzers an das gewünschte Ziel im Internet zu senden. Zu diesem Zeitpunkt sind die Daten entschlüsselt worden und liegen in ihrer ursprünglichen Form vor. Daher kennt der Exit-Node das endgültige Ziel des Datenverkehrs, hat aber keine Informationen über die IP-Adresse des Benutzers oder die ursprüngliche Quelle.
 \end{description}
 
-Tor nutzt Circuit Construction. Um die Anonymität zu wahren, baut Tor \textit{Circuits} auf, indem es mehrere Server aneinander kettet. Circuits sind hierbei ein Pfad durch das Tor Netzwerk, der den Nutzer mit einem Zielserver verbindet. Während der Circuit besteht, wird der gesamte Datenverkehr zwischen Nutzer unt Ziel über den Pfad geleitet. Dabei wird immer ein Entry-Node, Middle-Node und Exit-Node miteinander verbunden. Jeder Node weiß nur über den vorherigen und den nächsten Node im Circuit Bescheid, sodass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Entry-Node kennt daher nur die IP-Adresse des Benutzers und des Middle-Nodes im Circuit, nicht aber das endgültige Ziel. Die Strecke der Router bleibt somit während des Datenverkehrs gleich, was den Hauptunterschied zu Mixnet darstellt (Kapitel \ref{chap:mixnet_topology}). Tor erstellt und nutzt etwa aller 10 Minuten einen neuen Circuit.
+Tor nutzt Circuit Construction. Um die Anonymität zu wahren, baut Tor \textit{Circuits} auf, indem es mehrere Server aneinander kettet. Circuits sind hierbei ein Pfad durch das Tor Netzwerk, der den Nutzer mit einem Zielserver verbindet. Während der Circuit besteht, wird der gesamte Datenverkehr zwischen Nutzer und Ziel über den Pfad geleitet. Dabei wird immer ein Entry-Node, Middle-Node und Exit-Node miteinander verbunden. Jeder Node weiß nur über den vorherigen und den nächsten Node im Circuit Bescheid, sodass keine einzelne Instanz einen vollständigen Überblick über die Online-Aktivitäten des Benutzers hat. Der Entry-Node kennt daher nur die IP-Adresse des Benutzers und des Middle-Nodes im Circuit, nicht aber das endgültige Ziel. Die Strecke der Router bleibt somit während des Datenverkehrs gleich, was den Hauptunterschied zu Mixnet darstellt (Kapitel \ref{chap:mixnet_topology}). Tor erstellt und nutzt etwa aller 10 Minuten einen neuen Circuit.
 
 \begin{figure}[!h]
     \begin{displaymath}
         c = \mathrm{enc}_{1}\Big(\mathrm{enc}_{3}\big(\mathrm{enc}_{5}(m)\big)\Big)
     \end{displaymath}
-    \caption{Aus einer ursprüngliche Nachricht $m$ ensteht für den Pfad von Abbildung \ref{imgs:tor} die verschlüsselte Nachricht $c$. Hierfür wird eine Nachricht mit dem öffentlichen Schlüssel des Exit Nodes, dann mit dem öffentlichen Schlüssel des Middle Nodes und zum Schluss mit dem öffentlichen Schlüssel des Entry Nodes verschlüsselt.}
+    \caption{Aus einer ursprünglichen Nachricht $m$ entsteht für den Pfad von Abbildung \ref{imgs:tor} die verschlüsselte Nachricht $c$. Hierfür wird eine Nachricht mit dem öffentlichen Schlüssel des Exit Nodes, dann mit dem öffentlichen Schlüssel des Middle Nodes und zum Schluss mit dem öffentlichen Schlüssel des Entry Nodes verschlüsselt.}
     \label{equa:encryption}
 \end{figure}
 
-Hinzu kommt, das Tor für die Verschlüsselung Onion Encryption nutzt (Abbildung \ref{equa:encryption}). Dabei kann der Entry-Node nur seinen Teil der Nachricht entschlüsseln und diese dann weiter senden. Ziel dabei ist, dass nur der Exit-Node die ursprüngliche Nachricht kennt und weiß, mit welchen Service sich der Nutzer verbinden möchte. Dies bedeutet jedoch auch, dass die Nachricht zwischen jedem Node verschlüsselt werden muss\footnote{\cite{OnionRoutingApproaches}, Survey of Onion Routing Approaches: Advantages, Limitations and Future Scopes}.
+Hinzu kommt, das Tor für die Verschlüsselung Onion Encryption nutzt (Abbildung \ref{equa:encryption}). Dabei kann der Entry-Node nur seinen Teil der Nachricht entschlüsseln und diese dann weiter senden. Ziel dabei ist, dass nur der Exit-Node die ursprüngliche Nachricht kennt und weiß, mit welchen Service sich der Nutzer verbinden möchte. Dies bedeutet jedoch auch, dass die Nachricht zwischen jedem Node verschlüsselt werden muss\cite{OnionRoutingApproaches}.
 
 Darüber hinaus wird bei den Nachrichten \textit{Padding} genutzt. Beim Padding werden Nachrichten unterschiedlicher Länge auf die gleiche Größe $k$ gebracht, um zu verhindern, dass Nachrichten aufgrund ihrer Länge identifiziert werden. Alle Nachrichten, die kleiner als $k$ sind, werden solange mit Bits aufgefüllt, bis sie der Länge $k$ entsprechen. Nachrichten, die größer sind als $k$ werden in mehrere kleinere Nachrichten aufgeteilt, die dann wieder aufgefüllt und aufgeteilt werden, bis ihre Länge $k$ entspricht\cite{TorPadding}.
 
-Ein Tor-Server kann einsehen, von welchem vorherigen Server die Nachricht wann erhalten wurde und welcher Server als nächstes die Nachricht erhält. Darüber hinaus kann der Entry-Node den Sender und der Exit-Node den Empfänger einsehen.
+Ein Tor-Server kann einsehen, von welchem vorherigen Server die Nachricht wann erhalten wurde und welcher Server als Nächstes die Nachricht erhält. Darüber hinaus kann der Entry-Node den Sender und der Exit-Node den Empfänger einsehen.
 
 Die mehrschichtige Verschlüsselung und das Onion Routing in Tor bieten ein hohes Maß an Anonymität. Der Entry-Node und der Exit-Node haben nur teilweise Informationen über die Daten und ihren Ursprung oder ihr Ziel. Das macht es für jeden, der den Netzwerkverkehr beobachtet schwierig, die Quelle und das Ziel der Daten zu bestimmen\cite{TorWhitePaper}.
 
-\subsection{Vorteile}
-\label{chap:tor_advantages}
-
-Tor erlaubt eine verhältnismäßig hohe Anonymität und Performance. Zwischen jeden der Nodes werden die Datenpakete mit Onion Encryption entschlüsselt. Die Nodes können nicht Ursprung und Ziel einer Nachricht sehen. Gleichzeitig bleibt Latenz niedrig und Durchsatz hoch, da Circuit Construction und ein direktes weiterleiten von Nachrichten die Performance geringfügig beeinträchtigen. Die Performance ist geringer als VPN, da anstatt über nur einen VPN Server die Daten über drei Server durch einen Entry-Node, Middle-Node und Exit-Node geleitet werden müssen\cite{PerformanceAndSecurityTor}.
-
-Der Erfolg von Angriffen auf das Tor-Netzwerk (Kapitel \ref{chap:tor_disatvantages}) hängt unter anderem auch von der Anzahl an Entry- und Exit-Nodes ab. Mit einer größeren Anzahl an Servern nimmt die Erfolgchance von Angriffen expotenziel ab. Somit können durch ein hohes Angebot an Servern die Erfolgchance gegen Null gehen, wodurch Tor sehr sicher trotz verschiedener Angriffe wird.
-
-\subsection{Nachteile}
-\label{chap:tor_disatvantages}
+\subsection{Mögliche Angriffe}
+\label{chap:tor_attacks}
 
 \begin{figure}[h!]
     \centering
@@ -56,11 +49,11 @@ Der Erfolg von Angriffen auf das Tor-Netzwerk (Kapitel \ref{chap:tor_disatvantag
     \label{imgs:tor_transfer}
 \end{figure}
 
-Tor bietet auf Grund seiner Topologie Möglichkeiten für verschiedene Angriffe. Exemplarisch werden hierbei zwei Angriffsmöglichkeiten vorgestellt.
+Tor bietet aufgrund seiner Topologie Möglichkeiten für verschiedene Angriffe. Exemplarisch werden hierbei zwei Angriffsmöglichkeiten vorgestellt.
 
 Beim \textit{Fingerprinting Attack} auf Tor versucht der Angreifer die Webseiten, die ein Nutzer besucht, anhand der Verkehrsmuster und der Merkmale des Datenflusses zu identifizieren. Dieser Angriff ist aufgrund der Topologie von Tor besonders schwierig. Beim ursprünglichen Fingerprinting Attack macht sich der Angreifer die Tatsache zunutze, dass Webseiten aus mehreren Dateien bestehen, von denen jede eine bestimmte Dateigröße hat. Durch die Überwachung des Datenverkehrs und das Zählen der Paketgrößen auf verschiedenen Ports kann der Angreifer einen eindeutigen Fingerabdruck für jede Webseite erstellen, der auf der Menge der Dateigrößen basiert\cite{AttacksOnTor}.
 
-Tor, als Anonymitätssystem, stellt diese Art von Angriffen vor gewisse Herausforderungen. Da Tor Padding verwendet, ist es für den Angreifer nicht möglich, die Dateigrößen genau zu bestimmen. Außerdem verwendet Tor Multiplexing, um alle TCP-Streams in einer Verbindung zu kombinieren, was es dem Angreifer weiter erschwert, zwischen den Verbindungen zu unterscheiden.
+Tor, als anonymes Kommunikationssystem, stellt diese Art von Angriffen vor gewisse Herausforderungen. Da Tor Padding verwendet, ist es für den Angreifer nicht möglich, die Dateigrößen genau zu bestimmen. Außerdem verwendet Tor Multiplexing, um alle TCP-Streams in einer Verbindung zu kombinieren, was es dem Angreifer weiter erschwert, zwischen den Verbindungen zu unterscheiden.
 
 Das Bedrohungsmodell für diesen Fingerprinting Attack geht davon aus, dass der Angreifer den Zugangsrouter des Benutzers besetzt und alle Datenströme des Benutzers beobachtet. Ziel ist es, zu erraten, auf welche Webseite der Benutzer gerade zugreift. Dieser Angriff wird im Vergleich zu anderen Angriffen als ressourcenschonend angesehen und ist daher leichter durchführbar.
 
@@ -68,10 +61,17 @@ Um den Angriff auf Tor durchzuführen, analysiert der Angreifer den Datenfluss u
 
 Die Wahl des richtigen Fingerabdruckvektors ist entscheidend. Im Zusammenhang mit Tor geht es nicht nur um Dateigrößen, sondern auch darum, die Netzwerkbedingungen des Benutzers widerzuspiegeln. Der Angreifer kann eine Webseite mehrmals aufrufen, Vektoren aufzeichnen und Ähnlichkeitswerte zwischen ihnen berechnen. Der Vektor mit der höchsten Punktzahl wird als Fingerabdruck ausgewählt und repräsentiert sowohl die Eigenschaften der Webseite als auch die Netzwerkbedingungen des Benutzers\cite{FingerprintingOnTorAttack}.
 
-Eine andere Angriffsmöglichkeit sind \textit{Timing Attacks}. Bei Timing Attacks werden die Tor-Clients mittels Zeit-Analyse deanymisiert. Der Angreifer richtet zwei übernommene Nodes im Tor-Netzwerk ein, wobei einer als Entry-Node und der andere als Exit-Node fungiert. Zusätzlich wird für die Zeit-Analyse der Datenverkehr protokolliert. Der Angriff nutzt einen übernommenen Entry-Node, um den gesamten für Tor-Clients bestimmten HTTP-Verkehr zu manipulieren. Hierbei wird ein Signalgenerator in Webseiten eingefügt.
+Eine andere Angriffsmöglichkeit sind \textit{Timing Attacks}. Bei Timing Attacks werden die Tor-Clients mittels Zeit-Analyse deanonymisiert. Der Angreifer richtet zwei übernommene Nodes im Tor-Netzwerk ein, wobei einer als Entry-Node und der andere als Exit-Node fungiert. Zusätzlich wird für die Zeit-Analyse der Datenverkehr protokolliert. Der Angriff nutzt einen übernommenen Entry-Node, um den gesamten für Tor-Clients bestimmten HTTP-Verkehr zu manipulieren. Hierbei wird ein Signalgenerator in Webseiten eingefügt.
 
 Beim Surfen senden die Webbrowser der Tor-Clients kontinuierlich ein eineindeutiges Signal an den übernommenen Server, wobei die Zeit gemessen wird. Dieser Prozess bleibt so lange aktiv, wie der Benutzer den kompromittierten Browser-Tab geöffnet hält. Etwa alle zehn Minuten wechselt der Tor-Client den Circuit, bis dieser eventuell einen übernommen Entry-Node auswählt.
 
 Der Angreifer, der den übernommenen Entry-Nodes kontrolliert, führt eine Verkehrsanalyse durch, indem er die Signale, die durch den Nodes laufen, mit den Signalen vergleicht, die der Server empfängt. Wenn eine Übereinstimmung vorliegt, wird die Identität des Tor-Clients zusammen mit dem entsprechenden Verkehrsverlauf offengelegt, während er den kompromittierten Exit-Node benutzt hat (Abbildung \ref{imgs:tor_transfer}). Der Angriff macht sich die Zeitanalyse zunutze, um die Intervalle zwischen Circuit-Wechseln und Signalübertragungen zu ermitteln.
 
 Obwohl Entry-Nodes eine Standardfunktion in Tor sind und diesen Angriff teilweise entschärfen, bleibt die Methode dennoch effektiv. Der Angriff kann durch den Einsatz mehrerer übernommener Tor-Entry-Node skaliert werden, was die Zeit zur Kompromittierung der Anonymität eines Clients verringert. Die Verwendung eines Signalgenerators ermöglicht die Entkopplung der Kontrolle über Entry- und Exit-Nodes, was den Prozess weiter vereinfacht\cite{BrowserBasedAttacksOnTor}.
+
+Der Erfolg von Angriffen auf das Tor-Netzwerk hängt unter anderem auch von der Anzahl an Entry- und Exit-Nodes ab. Mit einer größeren Anzahl an Servern nimmt die Erfolgschance von Angriffen expotenziel ab. Somit können durch ein hohes Angebot an Servern die Erfolgschance gegen null gehen, wodurch Tor sehr sicher trotz verschiedener Angriffe wird.
+
+\subsection{Anonymität und Performance}
+\label{chap:tor_anonymity_performance}
+
+Tor erlaubt eine verhältnismäßig hohe Anonymität und Performance. Zwischen jeden der Nodes werden die Datenpakete mit Onion Encryption entschlüsselt. Die Nodes können nicht Ursprung und Ziel einer Nachricht sehen. Gleichzeitig bleibt Latenz niedrig und Durchsatz hoch, da Circuit Construction und ein direktes Weiterleiten von Nachrichten die Performance geringfügig beeinträchtigen. Die Performance ist geringer als VPN, da anstatt über nur einen VPN Server die Daten über drei Server durch einen Entry-Node, Middle-Node und Exit-Node geleitet werden müssen\cite{PerformanceAndSecurityTor}.

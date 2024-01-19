@@ -35,3 +35,6 @@
 - [x] Nachteile VPN besser erklären -> siehe Single Point of Failure (SPOF)
 - [x] Server Seitige Angriffe unterscheiden -> Server kann mitlesen, Fake Traffic zum Client senden
 - [x] Fake Traffik nicht immer
+- [x] JF Einleitung Motivation neu schreiben
+- [x] JF Einleitung Leitfrage und Ziel von Methode trennen
+- [x] JF Ausblick schreiben

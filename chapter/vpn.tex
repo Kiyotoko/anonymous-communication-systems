@@ -11,11 +11,11 @@
     \label{imgs:vpn}
 \end{figure}
 
-Ziel eines virtuellen privaten Netzwerkes (VPN) ist es, dass die Services nicht durch Anfragen auf die Nutzer schließen können. Dabei verbindet ein VPN in einem Overlay Network Nutzer mit ihrern Services über einen VPN Server. Um dieses System zu erklären, werden zunächst die Bestandteile des Begriffes einzeln erklärt:
+Ziel eines virtuellen privaten Netzwerkes (VPN) ist es, dass die Services nicht durch Anfragen auf die Nutzer schließen können. Dabei verbindet ein VPN in einem Overlay Network Nutzer mit ihren Services über einen VPN Server. Um dieses System zu erklären, werden zunächst die Bestandteile des Begriffes einzeln erklärt:
 
 \begin{itemize}
     \item Netzwerk: Ein Netzwerk besteht aus Geräten (wie Computern, Druckern, Routern), die untereinander kommunizieren können. Diese Kommunikation kann über verschiedene Standorte hinweg erfolgen und wird durch elektronische Signalisierungsspezifikationen und -protokolle ermöglicht.
-    \item Privat: Im Zusammenhang mit VPNs bedeutet \glqq privat\grqq, dass die Kommunikation zwischen Geräten vertraulich ist. Dritte haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung der Datensicherheit und des Schutzes der Itentität ist bei der Implementierung von VPNs von entscheidender Bedeutung.
+    \item Privat: Im Zusammenhang mit VPNs bedeutet \glqq privat\grqq, dass die Kommunikation zwischen Geräten vertraulich ist. Dritte haben keine Kenntnis von dessen Inhalt und der privaten Verbindung selbst. Die Gewährleistung der Datensicherheit und des Schutzes der Identität ist bei der Implementierung von VPNs von entscheidender Bedeutung.
     \item Virtuell: \glqq Virtuell\grqq\ bezieht sich auf simulierte oder künstliche Aspekte, die von Computersystemen geschaffen werden, um gemeinsame Ressourcen zu verwalten. Bei VPNs beinhaltet die Virtualisierung die private Kommunikation über eine gemeinsam genutzte Netzinfrastruktur. Das private Netz wird durch logische Partitionierung der gemeinsamen Ressource aufgebaut, nicht durch dedizierte physische Schaltungen.
     \item Diskret: VPNs sind diskrete Netzwerke, die getrennt über eine gemeinsam genutzte Infrastruktur arbeiten. Sie bieten exklusive Kommunikationsumgebungen ohne gemeinsame Verbindungspunkte.
 \end{itemize}
@@ -38,19 +38,17 @@ Ein VPN-Server kann jedoch einsehen, was wann von welchem Nutzer an welchen Serv
 
 VPNs können miteinander verbunden werden. Somit wird der gesamte Datenverkehr nicht länger über nur noch einen Server geleitet, sondern es werden hier mehrere Server miteinander verkettet. Die Netzwerkverbindung wird als \textit{VPN Chaining} bezeichnet. Einzelne VPN Server sind voneinander unabhängig. Dadurch wir eine vergleichbare Struktur wie Tor erzielt (Kapitel \ref{chap:tor_topology}). Alternativ können VPNs auch dafür genutzt werden, um sich mit Tor statt mit anderen VPNs zu verbinden, wodurch eine zusätzliche Sicherheit gegenüber dem Entry-Node erzielt wird. VPN Chaining dient somit als zusätzliche Sicherheit, da die Daten nicht länger über einen einzelnen VPN Server gehen, sondern über mehrere. Dadurch weiß kein Server mehr sowohl Ursprung als auch Ziel einer Nachricht\cite{VPNChains, SetupOfVPNChaining}.
 
-\subsection{Vorteile}
-\label{chap:vpn_advantages}
+\subsection{Mögliche Angriffe}
 
-VPNs bietet als primären Vorteil eine hohe Performance. Die Topologie erlaubt relativ niedrige Latenz als auch hohen Durchsatz. Im Vergleich zur Performance ohne anonyme Kommunikationssysteme wird somit der Datenverkehr nur über einen weiteren Server gesendet und einmal zusätzlich verschlüsselt.
-Um eine erhöhte Anonymität zu erzielen, wird verschleiert, von welcher IP eine Anfrage an einen Server stammt. Darüber hinaus kann dadurch ebenfalls Geoblocking umgangen werden. Anonyme Kommunikationssysteme ermöglichen es den Nutzern, geografische Beschränkungen zu überwinden, die oft durch Geoblocking-Maßnahmen auferlegt werden. Der Standort des Nutzers wird verschleiert, da die Services nicht mehr die IP-Adresse des Nutzers, sondern des VPN-Servers sehen. Hierdurch können Nutzer auf Inhalte und Dienste zugreifen, die auf bestimmte Regionen beschränkt sind. Dies ist sinnvoll für Menschen, die auf reisespezifische oder länderspezifische Inhalte zugreifen möchten, unabhängig von ihrem Aufenthaltsort.
-
-\subsection{Nachteile}
-\label{chap:vpn_disadvantages}
-
-VPN hat das Problem des \textit{Single Point of Failure} (SPOF). Dies bedeutet, dass bei Ausfall eines Bestandteils des Systems auch das gesamte System mit ausfällt. Bei VPN liegt es daran, dass alle Daten über einen einzigen Server geleitet werden. Fällt dieser Server aus oder wird er übernommen, ist diese Route nicht länger sicher verwendtbar\cite{AttacksOnVPNs}.
+VPN hat das Problem des \textit{Single Point of Failure} (SPOF). Dies bedeutet, dass bei Ausfall eines Bestandteils des Systems auch das gesamte System mit ausfällt. Bei VPN liegt es daran, dass alle Daten über einen einzigen Server geleitet werden. Fällt dieser Server aus oder wird er übernommen, ist diese Route nicht länger sicher verwendbar\cite{AttacksOnVPNs}.
 Die Schwachstelle bietet verschiedene Möglichkeiten für Angreifer. Im Nachfolgenden werden exemplarisch Angriffe auf VPNs betrachtet. Dabei werden hier primär verschiedene Server-seitige Angriffe durch SPOF unterschieden. Auch wenn Client-seitige Angriffe möglich sind, werden diese hier nicht betrachtet, da sie nicht durch die Topologie verursacht werden:
 
 \begin{itemize}
-    \item Alle Daten eines Nutzers laufen bei VPNs über einen einzigen Server. Daher kann der Server alleine alle Daten die über den Server übertragen werden auch entschlüsseln. Dies kann dazu führen, dass der Anbieter die Nachrichten der Nutzer mitlesen und entschlüsseln kann. Dies ist in der Vergangenheit bereits der Fall gewesen, so zum Beispiel beim Anbieter \textit{Hola VPN}\cite{VPNCriticalSurvey}.
-    \item Der VPN Server leitet die Anfragen der Nutzer an die Services weiter, und die Antworten der Services wiederum an die Nutzer zurück. Dies erlaubt es jedoch auch, dass der Server \textit{Fake Traffic} statt der richtigen Antwort zum Nutzer sendet. Fake Traffic kann eine künstlich generierte Anwort sein, oder eine manipulierte Nachricht der ursprünglichen Antwort des Services.
+    \item Alle Daten eines Nutzers laufen bei VPNs über einen einzigen Server. Daher kann der Server alleine alle Daten, die über den Server übertragen werden auch entschlüsseln. Dies kann dazu führen, dass der Anbieter die Nachrichten der Nutzer mitlesen und entschlüsseln kann. Dies ist in der Vergangenheit bereits der Fall gewesen, so zum Beispiel beim Anbieter \textit{Hola VPN}\cite{VPNCriticalSurvey}.
+    \item Der VPN Server leitet die Anfragen der Nutzer an die Services weiter, und die Antworten der Services wiederum an die Nutzer zurück. Dies erlaubt es jedoch auch, dass der Server \textit{Fake Traffic} statt der richtigen Antwort zum Nutzer sendet. Fake Traffic kann eine künstlich generierte Antwort sein oder eine manipulierte Nachricht der ursprünglichen Antwort des Services.
 \end{itemize}
+
+\subsection{Anonymität und Performance}
+
+VPNs hat eine hohe Performance. Die Topologie erlaubt relativ niedrige Latenz als auch hohen Durchsatz. Im Vergleich zur Performance ohne anonyme Kommunikationssysteme wird somit der Datenverkehr nur über einen weiteren Server gesendet und einmal zusätzlich verschlüsselt.
+Um eine erhöhte Anonymität zu erzielen, wird verschleiert, von welcher IP eine Anfrage an einen Server stammt. Der Standort des Nutzers wird verschleiert, da die Services nicht mehr die IP-Adresse des Nutzers, sondern des VPN-Servers sehen. Hierdurch können Nutzer auf Inhalte und Dienste zugreifen, die auf bestimmte Regionen beschränkt sind. Dies ist sinnvoll für Menschen, die länderspezifische Inhalte zugreifen möchten, unabhängig von ihrem Aufenthaltsort.

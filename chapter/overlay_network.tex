@@ -1,12 +1,13 @@
 \section{Overlay Networks}
 \label{chap:overlay_networks}
 
-Ein Overlay Network (Abbildung \ref{imgs:overlay_network}) besteht aus Servern, welche über das Internet verteilt sind und als zusätzliche Schicht fungieren, die über das bereits bestehende Netzwerk gezogen wird. Dieses Overlay stellt einer oder mehreren Anwendungen die Infrastruktur zur Verfügung. Dies bedeutet, dass über die bereits bestehenden physischen Netzwerkverbindungen (Underlay) eine neue Virtuelle Topologie (Overlay) gelegt wird, um mehr Funktionen wie neue Protokolle oder vereinfachtes Routing zu bieten. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\cite{OverlayNetwork}.
+Da alle untersuchten anonyme Kommunikationssysteme auch \textit{Overlay Networks} sind, wird hier zunächst die Funktionsweise von Overlay Networks generell erklärt.
+Ein solches Netzwerk (Abbildung \ref{imgs:overlay_network}) besteht aus Servern, welche über das Internet verteilt sind und als zusätzliche Schicht fungieren, die über das bereits bestehende Netzwerk gezogen wird. Dieses Overlay stellt einer oder mehreren Anwendungen die Infrastruktur zur Verfügung. Dies bedeutet, dass über die bereits bestehenden physischen Netzwerkverbindungen (Underlay) eine neue Virtuelle Topologie (Overlay) gelegt wird, um mehr Funktionen wie neue Protokolle oder vereinfachtes Routing zu bieten. Entscheidend ist, dass diese Overlays die Verantwortung für die Weiterleitung und Verwaltung von Anwendungsdaten übernehmen und dabei oft von der zugrundelegenden Internet-Infrastruktur abweichen\cite{OverlayNetwork}.
 
 \begin{figure}[h!]
     \centering
     \includesvg{graph/overlay_network.svg}
-    \caption{In einem Overlay Network (Gekennzeichet durch O) wird eine Nachricht von O1 zu O4 gesendet, wodurch eine physische Nachricht im Underlay Network (gekennzeichnet durch U) von U1 über U2 und U3 zu U4 stattfindet.}
+    \caption{In einem Overlay Network (gekennzeichnet durch O) wird eine Nachricht von O1 zu O4 gesendet, wodurch eine physische Nachricht im Underlay Network (gekennzeichnet durch U) von U1 über U2 und U3 zu U4 stattfindet.}
     \label{imgs:overlay_network}
 \end{figure}
 

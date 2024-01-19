@@ -1,15 +1,17 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[a4paper,left=2.5cm,right=3.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{svg}
 \usepackage[nottoc,notlof,numbib]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{titlesec}
 \usepackage{lipsum}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
 \usepackage{caption}
-
+\usepackage{titling}
 
 \bibliographystyle{ieeetr}
 \counterwithin{figure}{section}
@@ -24,7 +26,9 @@
 \emergencystretch=1cm
 \pagenumbering{arabic}
 
-\title{Vergleich von anonymen Kommunikationssystemen\\ \Large Mixnet, Tor und VPN}
+\pretitle{\begin{center}\Large Jugend forscht\par}
+\title{\LARGE Vergleich von anonymen Kommunikationssystemen}
+\posttitle{\par\Large Mixnet, Tor und VPN\end{center}}
 \author{Karl Zschiebsch}
 
 \begin{document}
@@ -40,14 +44,13 @@
 
     % Inhalt
     \clearpage
-    \input{chapter/introduction.tex}
+    \input{chapter/introduction_jf.tex}
     \input{chapter/overlay_network.tex}
     \input{chapter/vpn.tex}
     \input{chapter/tor.tex}
     \input{chapter/mixnet.tex}
-    \input{chapter/evaluation.tex}
-    \input{chapter/discussion.tex}
-    \input{chapter/summary.tex}
+    \input{chapter/evaluation_jf.tex}
+    \input{chapter/discussion_jf.tex}
     \clearpage
 
     % Literatur

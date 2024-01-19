@@ -1,0 +1,41 @@
+\section{Ergebnisse}
+
+\subsection{Anonymität}
+
+Mixnet bietet die höchste Stufe der Anonymität. Dies resultiert aus dem Mixing, dem Routing und der Onion Encryption. Primär sorgt hierbei der Stack durch das Mixen und Verzögern von Nachrichten für einen höheren Schutz gegenüber Tor und Mixnet. Mit Padding und dem optionalen Nutzen von Fake Traffic wird ermöglicht, Daten verschiedener Nutzer aus der Perspektive Dritter gleich aussehen zulassen sowie zu verhindern, dass Dritte sehen können, ob überhaupt kommuniziert wird.
+Im Vergleich dazu bietet Tor eine mittlere Anonymität. Es nutzt ebenfalls Onion Encrption. Hinzu kommt das Verwenden von Circuit Constructions. Obwohl verschiedene Angriffsmöglichkeiten existieren, erfordert das Durchbrechen der Anonymität den Übergriff auf mehrere Knotenpunkte, mindestens jedoch einen Entry- und Exit-Node.
+Hingegen weist ein VPN eine geringere Anonymität auf, da sämtliche Daten zentral über einen Server umgeleitet werden. Dieser zentrale Punkt der Datenumleitung erleichtert potenziell die Identifikation von Nutzern im Vergleich zu fortschrittlicheren Anonymisierungstechnologien wie Mixnet und Tor.
+
+\subsection{Performance}
+
+VPN ist sehr performant, da Daten nur zweimal zusätzlich verschlüsselt werden (1 mal von Nutzer zu Anbieter, und umgekehrt).
+Tor hat eine akzeptable Performance. Auf der einen Seite verschlüsselt es zwischen allen Knoten das Datenpaket, wodurch es eine höhere Latenz als VPNs hat. Auf der anderen Seite muss nicht darauf gewartet werden, genug Datenpakete für Mixing zu erhalten, wodurch Nachrichten auch nicht verzögert werden, und es nutzt Circuit Constructions, wodurch der Datenverkehr einmal über eine Route festgelegt wird, und danach für etwa 10 Minuten nicht mehr geändert werden muss.
+Mixnet ist sehr langsam aufgrund von mehrfachen Verschlüsselungsverfahren bei den Sendern. Es verzögert Nachrichten, mixt diese und wählt verschiedene Routen, wodurch es eine hohe Latenz hat, was primär zur niedrigen Performance beiträgt.
+
+\subsection{Zuordnung zu Anwendungsbereichen}
+
+Zunächst werden Typen von Interaktionen realer Anwendungsbereiche im Internet definiert, um anschließend VPN, Tor und Mixnet hinsichtlich Performance und Anonymität zunächst zu bewerten und in die zuvor definierten Anwendungsbereiche einzuordnen.
+Für die Leitfrage werden die folgenden drei Anwendungsbereiche definiert und betrachtet. Diese sollen alle verschiedenen Ansprüche an Performance und Anonymität grob abdecken. Sie haben nicht den Anspruch, jeden möglichen Anwendungsbereich oder alle Zwischenbereiche abzudecken:
+
+\begin{description}
+    \item[Streaming] ist die gleichzeitige Übertragung und Wiedergabe von Mediendaten. Es verlangt nach einer hohen Performance, da gleichzeitig Daten übertragen und wiedergegeben werden müssen. Da der Nutzer selbst kaum private Daten dabei sendet, sondern primär erhält, ist keine hohe Anonymität nötig.
+    \item[Messaging] ist das direkte senden und übertragen von persönlichen Textnachrichten zwischen zwei oder mehr Privatpersonen. Da die Übertragung möglichst unmittelbar ist, sollte eine mittlere Performance gewährleistet sein. Da übertragene Daten jedoch nicht unmittelbar auch wiedergegeben werden und Textnachrichten in der Regel deutlich kleiner als Mediendaten wie Videos oder Bilder sind, wird auch keine so hohe Performance wie beim Streaming gefordert.
+    \item[Online Banking] ist das Abwickeln von Bankgeschäften im Internet. Dabei muss die Sicherheit der Identität als auch der ausgetauschten Daten maximal sein. Ein Fehler beim Austausch interner Daten kann zu einem kritischen Versagen führen. Daher wird hier eine sehr hohe Anonymität gefordert. Da relativ wenig, dafür jedoch sehr wichtige Daten ausgetauscht werden, und eine hohe Latenz akzeptabel ist, wird nur eine geringe Performance benötigt.
+\end{description}
+
+Die anonymen Kommunikationssysteme werden relativ zu allen anderen betrachteten Systemen anhand ihrer Anonymität und Performance bewertet.
+
+VPN bietet die höchste Performance und die niedrigste Anonymität. Da über nur einen Server der Datenverkehr geleitet und verschlüsselt wird, ist die Performance sehr hoch. Gleichzeitig führt dies zu einer hohen Zentralität, was eine Schwachstelle für Anonymität ist und verschiedene Angriffsmöglichkeiten bietet. Es verhindert, dass Services den Ursprung von Anfragen sehen, erlaubt jedoch, dass der VPN-Server sowohl Ursprung als auch Ziel sehen kann.
+
+Tor bietet ein ausgewogenes Verhältnis aus Performance und Anonymität. Es versendet Nachrichten über Entry-, Middle- und Exit-Node und verschlüsselt über Onion Encryption. Es nutzt Padding, um Nachrichten auf eine gleiche Länge zu bringen. Entry-Nodes können nur den Ursprung sehen, Exit-Nodes nur das Ziel einer Nachricht. Nachrichten werden so versendet, wie sie erhalten wurden. Circuit Construction nutzt für etwa 10 Minuten dieselbe Route. Diese beiden Faktoren erlauben es, während dessen durch Betrachten des Netzwerkes Nutzer aufgrund ihres Datenverkehrs zu Deanonymisieren.
+
+Mixnet bietet die niedrigste Performance und die höchste Anonymität. Es verwendet eine ähnliche Topologie wie Tor. Es nutzt Onion Encryption und Padding. Zusätzlich wird in Stapeln die Reihenfolge der ankommenden und gesendeten Nachrichten geändert und verzögert. Es nutzt keine Circuit Construction sondern wählt bei jeder Verbindung eine neu zufällige Route.
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=\linewidth]{graph/systems_discussion.svg}
+    \caption{Anonymität und Performance bei VPN, Tor und Mixnet hängen indirekt voneinander ab. Umso höher die Performance ist, umso geringer ist auch die Anonymität und umgekehrt.}
+    \label{imgs:systems_discussion}
+\end{figure}
+
+Diese Untersuchung zeigt, dass hohe Performance und Anonymität für die hier betrachteten Systeme sich gegenseitig ausschließen (Abbildung \ref{imgs:systems_discussion}). Dies liegt daran, dass bei den hier untersuchten anonymen Kommunikationssystemen eine höhere Performance auf Kosten der Anonymität besteht, und umgekehrt. Daraus resultiert, dass kein System alleine die höchste Performance und Anonymität bietet. Welches System optimal ist, ist ein Abwägen zwischen Performance und Anonymität. Somit haben alle untersuchten Systeme ihre Berechtigung für ihre Anwendungsbeispiele.
