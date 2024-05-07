@@ -1,0 +1,4 @@
+,Server,Routing,Stack
+VPN,1,0,0
+Tor,3,1,0
+Mixnet,3,2,3
