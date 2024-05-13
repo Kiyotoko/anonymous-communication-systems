@@ -2,20 +2,14 @@
 \usepackage[a4paper,left=2.5cm,right=3.5cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{svg}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[nottoc,notlof,numbib]{tocbibind}
 \usepackage[ngerman]{babel}
 \usepackage{titlesec}
 \usepackage{lipsum}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
 \usepackage{caption}
-
-\renewcommand{\listoffigures}{
-    \begingroup
-    \tocsection
-    \tocfile{\listfigurename}{lof}
-    \endgroup
-}
+\usepackage{multicol}
 
 \bibliographystyle{apalike}
 \counterwithin{figure}{section}
@@ -33,28 +27,31 @@
 \begin{document}
     \parindent0.4cm
 
-    % Titelblatt und Abstrakt
+    % Titelblatt
     \include{chapter/cover.tex}
-    \include{chapter/abstract}
 
-    % Inhaltsverzeichnis
+    % Verzeichnis
     \tableofcontents
+    \listoffigures
 
     % Inhalt
-    \include{chapter/introduction.tex}
-    \include{chapter/overlay_network.tex}
-    \include{chapter/vpn.tex}
-    \include{chapter/tor.tex}
-    \include{chapter/mixnet.tex}
-    \include{chapter/evaluation.tex}
-    \include{chapter/discussion.tex}
-    \include{chapter/summary.tex}
+    \clearpage
+    \input{chapter/abstract}
+    \input{chapter/introduction.tex}
+    \input{chapter/overlay_network.tex}
+    \input{chapter/vpn.tex}
+    \input{chapter/tor.tex}
+    \input{chapter/mixnet.tex}
+    \input{chapter/evaluation.tex}
+    \input{chapter/discussion.tex}
+    \input{chapter/summary.tex}
+    \clearpage
 
     % Anhang
     \appendix
-    \include{chapter/abbreviations}
-    \listoffigures
-    \include{chapter/appendix.tex}
+    \input{chapter/abbreviations}
+    \input{chapter/appendix.tex}
+    \clearpage
     \bibliography{references.bib}
     \include{chapter/independence.tex}
 \end{document}
